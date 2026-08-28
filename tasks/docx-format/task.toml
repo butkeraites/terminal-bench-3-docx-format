@@ -15,7 +15,7 @@ What defeats automation here is that the layout is relational, not positional. W
 
 Approximation does not rescue it. Fitting a statistical model over 500 real filings to predict element placement gets close and still fails, because 99% correct on a filing is not 100%, and firms will not accept a document they have to re-check. That is a business no-go, not a tuning problem.
 
-Measured on the submitted version: reward 0 in three of three Claude Code runs (claude-opus-5, effort max) and two of two Codex runs (gpt-5.6-sol, xhigh). For a human expert it is roughly six hours of skilled work: the header and footer are quick, and the time goes into the body - positioning and resizing the images, the boxes around them, the coloured text boxes behind the text, and the highlights.
+Measured against an earlier wording of this instruction - the requirements it states are identical and the verifier is untouched - reward 0 in three of three Claude Code runs (claude-opus-5, effort max) and two of two Codex runs (gpt-5.6-sol, xhigh). For a human expert it is roughly six hours of skilled work: the header and footer are quick, and the time goes into the body - positioning and resizing the images, the boxes around them, the coloured text boxes behind the text, and the highlights.
 """
 solution_explanation = """
 The reference document was built the way the job is really done: by hand, in a word processor, by someone who produces these reports. It was not generated, and solution/solve.sh only copies the finished file into place.

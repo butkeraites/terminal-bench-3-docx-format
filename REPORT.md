@@ -37,7 +37,7 @@ sha256:fa6bb4870aea623f0b6e2e10520bc7cf4ddceb7dbe81a329f07659db90c8b3eb
 ```
 
 The submitted task hashes to
-`sha256:f54c3e324d5c6532ad8b71234f0d20bf27f439f73e489e4f21faa389cb748bf7`.
+`sha256:3902bc555df78dc123e5d93e61db0dc504ad5d2257f51da818919aead19bce8f`.
 **It is not the same directory that was tested, and this section says exactly
 how it differs.** The divergence is recoverable from the repository itself —
 the digest above is a cryptographic commitment to the tested bytes, and the
@@ -59,8 +59,8 @@ is that a reader can check it.
 | `tests/test.sh` | unchanged | `9f8811ead9ea047e…` |
 | `tests/test_state.py` | unchanged | `4d01a9d091aff747…` |
 | `tests/visual.py` | unchanged | `09a43cb335f6ad74…` |
-| `instruction.md` | **rewritten** | `2ca14fb81e7ce257…` |
-| `task.toml` | **rebuilt** | `2d451ab8b2d4ca6d…` |
+| `instruction.md` | **rewritten** | `108ce5b53d94549e…` |
+| `task.toml` | **rebuilt** | `6d9a9fcaa2f02bc9…` |
 | `environment/Dockerfile` | canary comment | `c00e648fde77c719…` |
 | `README.md` | removed | — |
 
