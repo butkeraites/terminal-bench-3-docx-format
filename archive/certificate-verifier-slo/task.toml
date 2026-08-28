@@ -8,7 +8,7 @@ artifacts = [{ source = "/shared/verdict_log.json", service = "judge" }]
 
 [task]
 name = "terminal-bench/certificate-verifier-slo"
-description = ""
+description = "Fix a certificate verification service so that every verdict on a mixed-integer optimality certificate is exact, while the replayed stream still meets its p99 latency budget and survives a worker being killed."
 authors = [{ name = "Renan Brito Cano Butkeraites", email = "renan@butkeraites.com" }]
 
 [metadata]

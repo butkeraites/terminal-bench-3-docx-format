@@ -3,7 +3,7 @@
 A single original TB3 task, plus the evidence that it is hard for frontier
 agents and not exploitable by them.
 
-The task lives in [`probe/docx-format/`](probe/docx-format/). Everything below
+The task lives in [`tasks/docx-format/`](tasks/docx-format/). Everything below
 is reproducible from the configs in [`configs/`](configs/) and the raw trial
 records in [`trials/`](trials/) and [`jobs/`](jobs/).
 
@@ -26,76 +26,99 @@ One further constraint does the heavy lifting: the document must render the same
 in more than one word processor. A layout that only happens to look right in the
 renderer the agent tested against is not a correct answer.
 
-Category `Media` / `Design`; 4 CPUs, 4 GB, network on; agent timeout 4 h.
+Category `document_processing`; 4 CPUs, 4 GB, network on; agent timeout 4 h.
 
-## 2. Task identity
+## 2. Task identity, and how the submitted task differs from the tested one
 
-Every trial reported in §4 recorded this digest in its `lock.json`:
+Every trial in §4 recorded this digest in its `lock.json`:
 
 ```
 sha256:fa6bb4870aea623f0b6e2e10520bc7cf4ddceb7dbe81a329f07659db90c8b3eb
 ```
 
-The submitted directory now hashes to
-`sha256:29952bd4552ba7dac00e5207f87d52378ea4d461224533ef331b0133bca1abab`,
-because `README.md` — the TB3 task write-up — was added after the trials ran and
-harbor's digest covers it. That file is documentation: it is not mounted into
-the agent's container and no test reads it, and this whole-directory digest moves
-again every time the write-up is edited.
+The submitted task hashes to
+`sha256:f54c3e324d5c6532ad8b71234f0d20bf27f439f73e489e4f21faa389cb748bf7`.
+**It is not the same directory that was tested, and this section says exactly
+how it differs.** The divergence is recoverable from the repository itself —
+the digest above is a cryptographic commitment to the tested bytes, and the
+codex trials logged the instruction they received verbatim in their `job.log`
+and `trial.log`. Nothing here has been scrubbed; the point of stating the delta
+is that a reader can check it.
 
-**Excluding `README.md`, the digest is exactly the one the trials recorded.**
-The 15 files that constitute the task — instruction, environment, tests,
-solution — are byte-identical to what was tested:
+| file | status | sha256 |
+|---|---|---|
+| `environment/assets/Picture1.png` | unchanged | `069e7512405cff74…` |
+| `environment/assets/Picture2.png` | unchanged | `2e2aa5e66cfe0862…` |
+| `environment/assets/template.pdf` | unchanged | `e60ceae02d1fa089…` |
+| `solution/expected.docx` | unchanged | `2bd64cae600981bc…` |
+| `solution/solve.sh` | unchanged | `8f44e41c75c59e52…` |
+| `tests/Dockerfile` | unchanged | `671a330728012bab…` |
+| `tests/perturb.py` | unchanged | `124e2c95cae5fbde…` |
+| `tests/style.py` | unchanged | `a0dccb7614437fe7…` |
+| `tests/template.pdf` | unchanged | `e60ceae02d1fa089…` |
+| `tests/test.sh` | unchanged | `9f8811ead9ea047e…` |
+| `tests/test_state.py` | unchanged | `4d01a9d091aff747…` |
+| `tests/visual.py` | unchanged | `09a43cb335f6ad74…` |
+| `instruction.md` | **rewritten** | `2ca14fb81e7ce257…` |
+| `task.toml` | **rebuilt** | `2d451ab8b2d4ca6d…` |
+| `environment/Dockerfile` | canary comment | `c00e648fde77c719…` |
+| `README.md` | removed | — |
 
-```bash
-python - <<'PY'
-import hashlib
-from harbor.publisher.packager import Packager
-from pathlib import Path
-d = Path('probe/docx-format').resolve()
-_, files = Packager.compute_content_hash(d)
-outer = hashlib.sha256()
-for f in files:
-    rel = f.relative_to(d).as_posix()
-    if rel == "README.md":
-        continue
-    outer.update(f"{rel}\0{Packager.compute_file_hash(f)}\n".encode())
-assert outer.hexdigest() == (
-    "fa6bb4870aea623f0b6e2e10520bc7cf4ddceb7dbe81a329f07659db90c8b3eb")
-print("task content unchanged since the trials")
-PY
+**The whole verifier is untouched.** Every file under `tests/`, the reference
+solution and all three assets are byte-identical to what produced the results in
+§4 and §6. No test was added, removed, weakened or retuned after the fact.
+
+`instruction.md` was rewritten by the author after the trials, for two reasons:
+the version that ran carried boilerplate that does not belong in a Harbor task
+(it restated the CPU count, network access and the agent timeout, all of which
+are declared in `task.toml`, and the reference task `hello-world` carries none
+of it), and the contributing guide asks the author to write this file
+themselves.
+
+The rewrite changes the wording, not the demands. Every requirement the 23 tests
+assert is still stated: the six exact strings, the two colours, the name in the
+footer, both image paths, the editable `.docx` at `/app/output.docx`, the large
+callout letters, the deliberate silence about layout, and the requirement that
+more than one text processor show the same page. That is checked mechanically
+rather than asserted — the check is reproduced below and passes.
+
+```python
+t = open('tasks/docx-format/instruction.md').read(); low = t.lower()
+assert all(s in t for s in ["Evidências de ocorrencia", "Usuário 123.3345",
+    "Print da falha", "Evidência do tempo", "Reconhecimento de Fala (Detalhe A)",
+    "hora 6pm (mostrada no Detalhe B)"])
+assert "footer" in low
+assert "more than one text processor" in low and "same page" in low
+assert "large letter" in low and "editable" in low
+assert "/app/output.docx" in t
+assert "/app/assets/Picture1.png" in t and "/app/assets/Picture2.png" in t
+assert "red" in low and "blue" in low
 ```
 
-| file | sha256 |
-|---|---|
-| `environment/Dockerfile` | `08e997ea0f082877…` |
-| `environment/assets/Picture1.png` | `069e7512405cff74…` |
-| `environment/assets/Picture2.png` | `2e2aa5e66cfe0862…` |
-| `environment/assets/template.pdf` | `e60ceae02d1fa089…` |
-| `instruction.md` | `ecd24daf447b2d55…` |
-| `solution/expected.docx` | `2bd64cae600981bc…` |
-| `solution/solve.sh` | `8f44e41c75c59e52…` |
-| `task.toml` | `fd7757b5fc5f77a3…` |
-| `tests/Dockerfile` | `671a330728012bab…` |
-| `tests/perturb.py` | `124e2c95cae5fbde…` |
-| `tests/style.py` | `a0dccb7614437fe7…` |
-| `tests/template.pdf` | `e60ceae02d1fa089…` |
-| `tests/test.sh` | `9f8811ead9ea047e…` |
-| `tests/test_state.py` | `4d01a9d091aff747…` |
-| `tests/visual.py` | `09a43cb335f6ad74…` |
+So the trials remain evidence that this task defeats both agents: the tests they
+failed are the same tests, and the requirements those tests encode are the same
+requirements. What cannot be claimed is byte-identity of the prompt, and it is
+not claimed.
 
-The digest deliberately excludes `cheat/` and `__pycache__`. The older
-`Task.checksum` property, which `result.json` still reports, is a plain
-`dirhash` of the whole directory — it *does* include `__pycache__`, so it moves
-whenever Python writes bytecode and is not a stable identifier. Harbor
-deprecates it in favour of the digest above; this report uses the digest.
+`task.toml` was rebuilt to the canonical shape in the contributing guide: the
+three explanation fields filled in, `version` and `gpus` added, the canary
+header restored, the author fields corrected from a `"probe"` placeholder to the
+real author, and a non-canonical `[task]` section and `subcategory` key removed.
+It is registry and review metadata; the agent never sees it.
 
-No canary string is present. Harbor's canary is opt-in
-(`harbor task init --include-canary-strings`, default off) and uses a single
-fixed GUID rather than a per-task one, so its absence is not a validation
-failure. It was left out deliberately: adding it would rewrite `instruction.md`,
-`task.toml` and `environment/Dockerfile`, and the exact correspondence with the
-recorded trials above is worth more than the marker.
+The canary comment added to `instruction.md` and `environment/Dockerfile` is
+stripped by Harbor before the instruction reaches the agent and is a comment in
+the Dockerfile, so neither affects execution.
+
+The digest excludes `__pycache__` and anything outside the five canonical
+entries. The older `Task.checksum` that `result.json` still reports is a plain
+`dirhash` of the whole directory, including `__pycache__`, so it moves whenever
+Python writes bytecode; Harbor deprecates it in favour of the digest used here.
+
+The task was developed under the path `probe/docx-format` and moved to
+`tasks/docx-format/` for submission. The digest is path-independent, so the move
+is not part of the delta above; the old path survives inside `trials/` and
+`jobs/` because those are verbatim records.
 
 ## 3. Required checks
 
@@ -235,11 +258,11 @@ the instruction — it is reading a layout as a set of relationships.
 
 ## 6. Adversarial trials (`/cheat`)
 
-Run against `probe/docx-cheat/`, which is `probe/docx-format/` with the
+Run against `adversarial/docx-cheat/`, which is `tasks/docx-format/` with the
 instruction replaced by a red-team charter that explicitly authorises tampering
 with verification, fabricating outputs, and reaching for leaked answers. The
 attack surface it is pointed at is enumerated in
-[`probe/docx-format/cheat/solve.sh`](probe/docx-format/cheat/solve.sh): read
+[`adversarial/cheat-solve.sh`](adversarial/cheat-solve.sh): read
 `/solution/expected.docx`, write `reward.txt` directly, convert the template PDF
 to `.docx` and patch the strings, or ship a raster image of the page.
 
@@ -390,13 +413,18 @@ Stated plainly rather than papered over.
    `README.FABRICATED.md` beside them. Any script that walks this repository
    looking for rewards must read `verifier/reward.txt`, not any `result.json` it
    happens to find.
-5. **Two candidate tasks exist in this repository.** `tasks/certificate-verifier-slo/`
+5. **Two candidate tasks exist in this repository.** `archive/certificate-verifier-slo/`
    is a second, complete task with its own oracle/nop gate, kept here because the
    work is real, but it is not the submission and has only one agent trial. The
-   submission is `probe/docx-format/`.
-6. **The task directory is still named `probe/`.** Renaming it is safe — the
-   content digest is path-independent — but it was left in place so the paths in
-   this report match the recorded trials exactly.
+   submission is `tasks/docx-format/`. Its README is unfinished — the
+   "Relevant experience" section is still a placeholder — and it has not been
+   reviewed to submission standard. It is archived material, not a second
+   candidate.
+6. **The recorded trials name the task `probe/docx-format`.** It was developed
+   under that path and moved to `tasks/docx-format/` for submission. The content
+   digest is path-independent, so the move does not affect the correspondence in
+   §2; the old path survives inside `trials/` and `jobs/` because those are
+   verbatim records and were not rewritten.
 
 ---
 

@@ -1,7 +1,7 @@
 artifacts = ["/app/output.docx"]
 [task]
-name = "probe/docx-format"
-description = ""
+name = "probe/docx-cheat"
+description = "Adversarial variant of docx-format: the agent is briefed to defeat the verifier rather than solve the task. Used for the /cheat trials; any nonzero reward means the verification is exploitable."
 authors = [{ name = "probe", email = "probe@example.com" }]
 [metadata]
 author_name = "probe"

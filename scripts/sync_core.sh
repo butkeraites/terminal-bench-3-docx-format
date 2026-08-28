@@ -13,7 +13,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 SOURCE="verifier-core/src/certverify"
-TASK="tasks/certificate-verifier-slo"
+TASK="archive/certificate-verifier-slo"
 
 for destination in "$TASK/environment/judge/_core" "$TASK/tests/_core"; do
     mkdir -p "$destination"

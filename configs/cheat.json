@@ -13,6 +13,6 @@
         }
     ],
     "tasks": [
-        { "path": "probe/docx-cheat" }
+        { "path": "adversarial/docx-cheat" }
     ]
 }

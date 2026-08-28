@@ -1,6 +1,6 @@
 # Terminal-Bench 3 task submission
 
-One original TB3 task — **[`probe/docx-format/`](probe/docx-format/)** — with
+One original TB3 task — **[`tasks/docx-format/`](tasks/docx-format/)** — with
 the evidence that frontier agents fail it and cannot game it.
 
 **Start with [`REPORT.md`](REPORT.md).** It carries the task identity and its
@@ -17,8 +17,9 @@ in more than one word processor. Grading is arithmetic over the pixels of the
 rendered output; nothing inspects the OOXML, and the expectations are extracted
 from the template itself rather than written into the tests by hand.
 
-[`probe/docx-format/README.md`](probe/docx-format/README.md) is the TB3 task
-write-up: why it is hard, how it is solved, how it is verified.
+Why it is hard, how it is solved and how it is verified are stated by the task
+author in the `[metadata]` block of
+[`tasks/docx-format/task.toml`](tasks/docx-format/task.toml).
 
 ## Results
 
@@ -39,17 +40,41 @@ they had been drawn as pixels, so the rendered page contains no text "A" and no
 text "B". The same assertion that no honest agent passes is what catches the
 cheat.
 
+## A known limit of the verifier
+
+The adversarial trial measured where this task's verification is thin, and the
+result is worth stating plainly rather than leaving for a reviewer to find.
+
+The instruction asks for an *editable* Word document, but no test enforces
+editability. A flat 300 dpi raster of the template, with real text floated over
+it, passes 20 of the 23 tests — including both cross-engine agreement tests,
+because a bitmap cannot disagree between renderers. It is stopped only by the
+callout letters, which were drawn as pixels and so leave no "A" or "B" in the
+page's text layer. That assertion was written to check where a letter sits, not
+to catch a raster; it happens to be the backstop.
+
+Three tests would close it properly, and would be the next work on this task:
+extract the text through OCR and compare it with the text layer, assert that the
+artefact really is an editable Word document rather than a picture container,
+and check the OOXML for the structural markers a genuine document must carry.
+
+They are not in the submitted suite. Adding them now would mean the five
+standard trials and the two adversarial trials had run against a different
+verifier, and re-running them was out of budget. The suite here is exactly the
+one every result in `REPORT.md` was measured against.
+
 ## Layout
 
 ```
-probe/docx-format/     the submitted task
-probe/docx-cheat/      same task, red-team instruction, for the /cheat trials
+tasks/docx-format/     the submitted task
+adversarial/          red-team variant + scripted cheat, for the /cheat trials
+  docx-cheat/          same task, red-team instruction, for the /cheat trials
 configs/               job configs for oracle, nop, /run and /cheat
 trials/  jobs/         raw harbor records for every run cited in the report
 scripts/               utilities, incl. the trial-log recovery in REPORT.md's appendix
-tasks/certificate-verifier-slo/   a second, complete task — NOT the submission
+archive/certificate-verifier-slo/   a second, complete task — NOT the submission
 ```
 
-`tasks/certificate-verifier-slo/` is a different task that was built first and
+`archive/certificate-verifier-slo/` is a different task that was built first and
 taken as far as its own oracle/nop gate. It is kept because the work is real,
-but the submission is `probe/docx-format/`.
+but the submission is `tasks/docx-format/`.

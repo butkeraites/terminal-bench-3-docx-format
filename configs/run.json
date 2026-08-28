@@ -12,6 +12,6 @@
         }
     ],
     "tasks": [
-        { "path": "probe/docx-format" }
+        { "path": "tasks/docx-format" }
     ]
 }
