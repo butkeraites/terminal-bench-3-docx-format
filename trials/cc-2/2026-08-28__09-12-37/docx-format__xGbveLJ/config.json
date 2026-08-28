@@ -1,0 +1,20 @@
+{
+    "task": {
+        "path": "probe/docx-format"
+    },
+    "trial_name": "docx-format__xGbveLJ",
+    "trials_dir": "trials/cc-2/2026-08-28__09-12-37",
+    "agent": {
+        "name": "claude-code",
+        "model_name": "anthropic/claude-opus-5",
+        "kwargs": {
+            "reasoning_effort": "max"
+        },
+        "env": {
+            "CLAUDE_FORCE_OAUTH": "****",
+            "CLAUDE_CODE_OAUTH_TOKEN": "sk-a****wAA",
+            "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "****"
+        }
+    },
+    "job_id": "f5ea6230-1a00-4130-8228-f79d68886a40"
+}

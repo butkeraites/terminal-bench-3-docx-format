@@ -1,0 +1,3 @@
+Skipping image OS validation for hb__b346adfa8a72f9b9b4e91003262fe511: docker inspect returned 1
+Collecting main service artifacts
+Skipping image OS validation for hb__be855c17b3dd14dd64e1757426ef9577: docker inspect returned 1

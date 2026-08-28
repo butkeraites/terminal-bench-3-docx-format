@@ -1,0 +1,278 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-08-28T14:20:23.613180+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 23,
+            "passed": 19,
+            "failed": 4,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1787926746405,
+            "stop": 1787926823613
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 974,
+                "start": 1787926746861,
+                "stop": 1787926747835,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787926747835,
+                "stop": 1787926747836,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787926747836,
+                "stop": 1787926747837,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787926747837,
+                "stop": 1787926747837,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787926747838,
+                "stop": 1787926747838,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787926747838,
+                "stop": 1787926747839,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_the_name_reaches_the_footer",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787926747839,
+                "stop": 1787926747840,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_placeholders_are_gone",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787926747840,
+                "stop": 1787926747840,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_page_furniture_is_placed_as_in_the_template",
+                "status": "passed",
+                "duration": 23002,
+                "start": 1787926747840,
+                "stop": 1787926770842,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_left_bar_starts_below_the_banner",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787926770842,
+                "stop": 1787926770843,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_headings_are_dressed_like_the_template",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787926770843,
+                "stop": 1787926770843,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_banner_survived",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787926770843,
+                "stop": 1787926770844,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "passed",
+                "duration": 11,
+                "start": 1787926770844,
+                "stop": 1787926770855,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::index,aspect::[(0, 1.4719101123595506), (1, 3.8461538461538463)]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787926770855,
+                "stop": 1787926770856,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::index,aspect::[(0, 1.4719101123595506), (1, 3.8461538461538463)]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image",
+                "status": "passed",
+                "duration": 763,
+                "start": 1787926770856,
+                "stop": 1787926771619,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter",
+                "status": "passed",
+                "duration": 1102,
+                "start": 1787926771620,
+                "stop": 1787926772722,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_no_body_text_is_covered_by_an_image",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787926772723,
+                "stop": 1787926772723,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_frame_hugs_the_image_it_borders",
+                "status": "passed",
+                "duration": 236,
+                "start": 1787926772723,
+                "stop": 1787926772959,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_each_letter_sits_beside_the_image_it_labels",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 19,
+                "start": 1787926772959,
+                "stop": 1787926772978,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::letter_name,index::[('A', 0), ('B', 1)]"
+                ],
+                "trace": "page = <visual.Page object at 0x7ff61653ecf0>\nfigures = [(345,412)-(894,786), (625,943)-(937,1024)], letter_name = 'A'\nindex = 0\n\n    @pytest.mark.parametrize(\"letter_name,index\", [(\"A\", 0), (\"B\", 1)])\n    def test_each_letter_sits_beside_the_image_it_labels(page, figures, letter_name, index):\n        letters = {t: r for r, t in page.text_boxes() if t in (\"A\", \"B\")}\n        assert letter_name in letters, f\"letter {letter_name} is not on the page\"\n        letter, figure = letters[letter_name], figures[index]\n        gap_x = max(0, letter.x0 - figure.x1, figure.x0 - letter.x1)\n        gap_y = max(0, letter.y0 - figure.y1, figure.y0 - letter.y1)\n>       assert gap_x <= MAX_LETTER_GAP and gap_y <= MAX_LETTER_GAP, (\n            f\"letter {letter_name} at {letter} is {gap_x}px horizontally and {gap_y}px \"\n            f\"vertically from the image it labels at {figure} \u2014 it reads as unrelated\"\n        )\nE       AssertionError: letter A at (1124,393)-(1174,468) is 230px horizontally and 0px vertically from the image it labels at (345,412)-(894,786) \u2014 it reads as unrelated\nE       assert (230 <= 90)\n\ntests/test_state.py:300: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_each_letter_sits_beside_the_image_it_labels",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 5,
+                "start": 1787926772978,
+                "stop": 1787926772983,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::letter_name,index::[('A', 0), ('B', 1)]"
+                ],
+                "trace": "page = <visual.Page object at 0x7ff61653ecf0>\nfigures = [(345,412)-(894,786), (625,943)-(937,1024)], letter_name = 'B'\nindex = 1\n\n    @pytest.mark.parametrize(\"letter_name,index\", [(\"A\", 0), (\"B\", 1)])\n    def test_each_letter_sits_beside_the_image_it_labels(page, figures, letter_name, index):\n        letters = {t: r for r, t in page.text_boxes() if t in (\"A\", \"B\")}\n        assert letter_name in letters, f\"letter {letter_name} is not on the page\"\n        letter, figure = letters[letter_name], figures[index]\n        gap_x = max(0, letter.x0 - figure.x1, figure.x0 - letter.x1)\n        gap_y = max(0, letter.y0 - figure.y1, figure.y0 - letter.y1)\n>       assert gap_x <= MAX_LETTER_GAP and gap_y <= MAX_LETTER_GAP, (\n            f\"letter {letter_name} at {letter} is {gap_x}px horizontally and {gap_y}px \"\n            f\"vertically from the image it labels at {figure} \u2014 it reads as unrelated\"\n        )\nE       AssertionError: letter B at (1124,925)-(1174,1000) is 187px horizontally and 0px vertically from the image it labels at (625,943)-(937,1024) \u2014 it reads as unrelated\nE       assert (187 <= 90)\n\ntests/test_state.py:300: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787926772983,
+                "stop": 1787926772984,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_both_engines_dress_the_headings_alike",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 26698,
+                "start": 1787926772984,
+                "stop": 1787926799682,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7ff61653ecf0>\nsecond_rendering = <visual.Page object at 0x7ff5d0f1e710>\n\n    def test_both_engines_dress_the_headings_alike(page, second_rendering):\n        \"\"\"Heading ink that differs between engines is ink the document never chose.\"\"\"\n        first = Profile.read(page).headings\n        second = Profile.read(second_rendering).headings\n        assert first and second, \"no heading plates found in one of the renderings\"\n    \n        for number, (a, b) in enumerate(zip(first, second), 1):\n>           assert a.ink_is_dark == b.ink_is_dark, (\n                f\"heading {number} is set in {'dark' if a.ink_is_dark else 'light'} ink \"\n                f\"by one engine and {'dark' if b.ink_is_dark else 'light'} by another \u2014 \"\n                f\"the document does not state the colour, so each reader gets its own\"\n            )\nE           AssertionError: heading 1 is set in dark ink by one engine and light by another \u2014 the document does not state the colour, so each reader gets its own\nE           assert True == False\nE            +  where True = HeadingStyle(height=34, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907).ink_is_dark\nE            +  and   False = HeadingStyle(height=34, left_inset=152, ink_is_dark=False, contrast=0.5385620892047882).ink_is_dark\n\ntests/test_state.py:368: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_both_engines_place_the_furniture_alike",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 23930,
+                "start": 1787926799682,
+                "stop": 1787926823612,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7ff61653ecf0>\nsecond_rendering = <visual.Page object at 0x7ff5d0f1e710>\n\n    def test_both_engines_place_the_furniture_alike(page, second_rendering):\n        \"\"\"Page furniture that moves between engines is furniture placed by chance.\"\"\"\n        first = Profile.read(page).furniture\n        second = Profile.read(second_rendering).furniture\n        # Only the left bar's top edge. It butts against the banner, so a\n        # disagreement there is visible. The footer bar's own position drifts ~12px\n        # between these engines even for the reference document \u2014 they compute the\n        # usable body height differently \u2014 and that drift is hidden under the bar\n        # itself. Asserting on it would fail correct documents.\n        for name in (\"left_bar\",):\n            a, b = getattr(first, name), getattr(second, name)\n            assert a is not None and b is not None, f\"{name} was not found in one rendering\"\n            # Only the edge that has a visible relationship is compared. The left\n            # bar's top butts against the banner and any disagreement there shows;\n            # its foot runs under the footer bar, and the two engines put it at\n            # y=1655 and y=1697 even for the reference, because they compute the\n            # usable body height differently. That difference is invisible and is\n            # not the document's fault.\n>           assert abs(a.y0 - b.y0) <= 8, (\n                f\"{name} starts at y={a.y0} under one engine and y={b.y0} under \"\n                f\"another \u2014 where it begins is not fixed by the document\"\n            )\nE           AssertionError: left_bar starts at y=178 under one engine and y=155 under another \u2014 where it begins is not fixed by the document\nE           assert 23 <= 8\nE            +  where 23 = abs((178 - 155))\nE            +    where 178 = (0,178)-(51,1656).y0\nE            +    and   155 = (0,155)-(51,1656).y0\n\ntests/test_state.py:393: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

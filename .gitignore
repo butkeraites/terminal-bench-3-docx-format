@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Test / tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Harbor / trial output
+harbor-output/
+results/
+
+# Trial evidence IS part of the deliverable, so trials/ is tracked. What is
+# excluded is only the bulk that nothing in REPORT.md rests on: the agent's own
+# session directory and the raw transcripts run to ~35 MB per Claude Code trial.
+# The records (result/lock/config json), the verifier output (ctrf.json,
+# reward.txt, test-stdout.txt) and the .docx each agent actually produced are
+# kept.
+trials/**/agent/sessions/
+trials/**/agent/trajectory.json
+trials/**/agent/claude-code.txt
+
+# Rendered docs are committed; keep the intermediate out
+docs/*.tmp
+
+# OS
+.DS_Store

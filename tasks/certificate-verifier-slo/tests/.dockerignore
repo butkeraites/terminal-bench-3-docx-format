@@ -1,0 +1,4 @@
+# Build context for the VERIFIER image, which does COPY . /tests/.
+__pycache__/
+*.py[cod]
+.pytest_cache/

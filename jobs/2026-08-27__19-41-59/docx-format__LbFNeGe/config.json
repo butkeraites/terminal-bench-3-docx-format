@@ -1,0 +1,11 @@
+{
+    "task": {
+        "path": "probe/docx-format"
+    },
+    "trial_name": "docx-format__LbFNeGe",
+    "trials_dir": "jobs/2026-08-27__19-41-59",
+    "agent": {
+        "name": "nop"
+    },
+    "job_id": "3e27ac36-a09f-4f75-9eab-eb32f0a7c493"
+}

@@ -1,0 +1,259 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-08-28T10:29:48.497400+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 23,
+            "passed": 0,
+            "failed": 23,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1787912977703,
+            "stop": 1787912988497
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "failed",
+                "duration": 16,
+                "start": 1787912978063,
+                "stop": 1787912978079,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "failed",
+                "duration": 5,
+                "start": 1787912978079,
+                "stop": 1787912978084,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912978084,
+                "stop": 1787912978088,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912978088,
+                "stop": 1787912978092,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912978092,
+                "stop": 1787912978096,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912978096,
+                "stop": 1787912978100,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_name_reaches_the_footer",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912978100,
+                "stop": 1787912978104,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_placeholders_are_gone",
+                "status": "failed",
+                "duration": 3,
+                "start": 1787912978105,
+                "stop": 1787912978108,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_page_furniture_is_placed_as_in_the_template",
+                "status": "failed",
+                "duration": 10330,
+                "start": 1787912978109,
+                "stop": 1787912988439,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_left_bar_starts_below_the_banner",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988439,
+                "stop": 1787912988443,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_headings_are_dressed_like_the_template",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988443,
+                "stop": 1787912988447,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_banner_survived",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988448,
+                "stop": 1787912988452,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988452,
+                "stop": 1787912988456,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988456,
+                "stop": 1787912988460,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988460,
+                "stop": 1787912988464,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988464,
+                "stop": 1787912988468,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_no_body_text_is_covered_by_an_image",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988468,
+                "stop": 1787912988472,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_frame_hugs_the_image_it_borders",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988472,
+                "stop": 1787912988476,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_each_letter_sits_beside_the_image_it_labels",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988476,
+                "stop": 1787912988480,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_each_letter_sits_beside_the_image_it_labels",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988480,
+                "stop": 1787912988484,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it",
+                "status": "failed",
+                "duration": 3,
+                "start": 1787912988485,
+                "stop": 1787912988488,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_both_engines_dress_the_headings_alike",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988489,
+                "stop": 1787912988493,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            },
+            {
+                "name": "test_state.py::test_both_engines_place_the_furniture_alike",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787912988493,
+                "stop": 1787912988497,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def page() -> Page:\n        if not OUTPUT.exists():\n>           pytest.fail(\"/app/output.docx was never written\")\nE           Failed: /app/output.docx was never written\n\ntests/test_state.py:28: Failed"
+            }
+        ]
+    }
+}

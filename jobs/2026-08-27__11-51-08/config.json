@@ -1,0 +1,16 @@
+{
+    "agents": [
+        {
+            "name": "claude-code",
+            "model_name": "anthropic/claude-opus-5",
+            "kwargs": {
+                "reasoning_effort": "max"
+            }
+        }
+    ],
+    "tasks": [
+        {
+            "path": "tasks/certificate-verifier-slo"
+        }
+    ]
+}

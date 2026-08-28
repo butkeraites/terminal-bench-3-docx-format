@@ -1,0 +1,241 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.5.2
+collected 23 items
+
+tests/test_state.py EEEEEEEEEEEEEEEEEEEEEEE                              [100%]
+
+==================================== ERRORS ====================================
+_ ERROR at setup of test_required_text_is_present[Evid\xeancias de ocorrencia] _
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_____ ERROR at setup of test_required_text_is_present[Usu\xe1rio 123.3345] _____
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_______ ERROR at setup of test_required_text_is_present[Print da falha] ________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+____ ERROR at setup of test_required_text_is_present[Evid\xeancia do tempo] ____
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_ ERROR at setup of test_required_text_is_present[Reconhecimento de Fala (Detalhe A)] _
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_ ERROR at setup of test_required_text_is_present[hora 6pm (mostrada no Detalhe B)] _
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+______________ ERROR at setup of test_the_name_reaches_the_footer ______________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_______________ ERROR at setup of test_the_placeholders_are_gone _______________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+____ ERROR at setup of test_the_page_furniture_is_placed_as_in_the_template ____
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_________ ERROR at setup of test_the_left_bar_starts_below_the_banner __________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+________ ERROR at setup of test_headings_are_dressed_like_the_template _________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+__________________ ERROR at setup of test_the_banner_survived __________________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_ ERROR at setup of test_each_image_keeps_its_aspect_ratio[0-1.4719101123595506] _
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_ ERROR at setup of test_each_image_keeps_its_aspect_ratio[1-3.8461538461538463] _
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_____ ERROR at setup of test_a_red_rectangle_marks_a_detail_on_each_image ______
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_ ERROR at setup of test_an_orange_arrow_runs_from_each_mark_towards_its_letter _
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+__________ ERROR at setup of test_no_body_text_is_covered_by_an_image __________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+__________ ERROR at setup of test_the_frame_hugs_the_image_it_borders __________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+___ ERROR at setup of test_each_letter_sits_beside_the_image_it_labels[A-0] ____
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+___ ERROR at setup of test_each_letter_sits_beside_the_image_it_labels[B-1] ____
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_ ERROR at setup of test_the_second_figure_precedes_the_caption_that_refers_to_it _
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+_________ ERROR at setup of test_both_engines_dress_the_headings_alike _________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+________ ERROR at setup of test_both_engines_place_the_furniture_alike _________
+
+    @pytest.fixture(scope="session")
+    def page() -> Page:
+        if not OUTPUT.exists():
+>           pytest.fail("/app/output.docx was never written")
+E           Failed: /app/output.docx was never written
+
+tests/test_state.py:28: Failed
+=========================== short test summary info ============================
+ERROR tests/test_state.py::test_required_text_is_present[Evid\xeancias de ocorrencia]
+ERROR tests/test_state.py::test_required_text_is_present[Usu\xe1rio 123.3345]
+ERROR tests/test_state.py::test_required_text_is_present[Print da falha] - Fa...
+ERROR tests/test_state.py::test_required_text_is_present[Evid\xeancia do tempo]
+ERROR tests/test_state.py::test_required_text_is_present[Reconhecimento de Fala (Detalhe A)]
+ERROR tests/test_state.py::test_required_text_is_present[hora 6pm (mostrada no Detalhe B)]
+ERROR tests/test_state.py::test_the_name_reaches_the_footer - Failed: /app/ou...
+ERROR tests/test_state.py::test_the_placeholders_are_gone - Failed: /app/outp...
+ERROR tests/test_state.py::test_the_page_furniture_is_placed_as_in_the_template
+ERROR tests/test_state.py::test_the_left_bar_starts_below_the_banner - Failed...
+ERROR tests/test_state.py::test_headings_are_dressed_like_the_template - Fail...
+ERROR tests/test_state.py::test_the_banner_survived - Failed: /app/output.doc...
+ERROR tests/test_state.py::test_each_image_keeps_its_aspect_ratio[0-1.4719101123595506]
+ERROR tests/test_state.py::test_each_image_keeps_its_aspect_ratio[1-3.8461538461538463]
+ERROR tests/test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image
+ERROR tests/test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter
+ERROR tests/test_state.py::test_no_body_text_is_covered_by_an_image - Failed:...
+ERROR tests/test_state.py::test_the_frame_hugs_the_image_it_borders - Failed:...
+ERROR tests/test_state.py::test_each_letter_sits_beside_the_image_it_labels[A-0]
+ERROR tests/test_state.py::test_each_letter_sits_beside_the_image_it_labels[B-1]
+ERROR tests/test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it
+ERROR tests/test_state.py::test_both_engines_dress_the_headings_alike - Faile...
+ERROR tests/test_state.py::test_both_engines_place_the_furniture_alike - Fail...
+============================= 23 errors in 12.44s ==============================

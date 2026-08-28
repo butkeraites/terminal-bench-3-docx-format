@@ -1,0 +1,16 @@
+[
+  {
+    "source": "/logs/artifacts",
+    "destination": "artifacts/logs/artifacts",
+    "type": "directory",
+    "status": "empty",
+    "service": null
+  },
+  {
+    "source": "/shared/verdict_log.json",
+    "destination": "artifacts/shared/verdict_log.json",
+    "type": "file",
+    "status": "ok",
+    "service": "judge"
+  }
+]

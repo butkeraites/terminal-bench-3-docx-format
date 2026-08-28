@@ -1,0 +1,59 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-08-27T19:28:29.321280+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 0,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1787858909277,
+            "stop": 1787858909321
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_every_array_is_a_costas_array",
+                "status": "failed",
+                "duration": 12,
+                "start": 1787858909301,
+                "stop": 1787858909313,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def arrays():\n        if not OUTPUT.exists():\n>           pytest.fail(f\"{OUTPUT} was never written\")\nE           Failed: /app/costas19.txt was never written\n\ntests/test_state.py:31: Failed"
+            },
+            {
+                "name": "test_state.py::test_no_array_appears_twice",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787858909313,
+                "stop": 1787858909317,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def arrays():\n        if not OUTPUT.exists():\n>           pytest.fail(f\"{OUTPUT} was never written\")\nE           Failed: /app/costas19.txt was never written\n\ntests/test_state.py:31: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_enumeration_is_complete",
+                "status": "failed",
+                "duration": 3,
+                "start": 1787858909317,
+                "stop": 1787858909320,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def arrays():\n        if not OUTPUT.exists():\n>           pytest.fail(f\"{OUTPUT} was never written\")\nE           Failed: /app/costas19.txt was never written\n\ntests/test_state.py:31: Failed"
+            }
+        ]
+    }
+}

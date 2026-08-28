@@ -1,0 +1,5 @@
+{
+    "tasks": [
+        { "path": "probe/docx-format" }
+    ]
+}

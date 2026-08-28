@@ -1,0 +1,7 @@
+{
+    "tasks": [
+        {
+            "path": "tasks/certificate-verifier-slo"
+        }
+    ]
+}

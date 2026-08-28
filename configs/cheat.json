@@ -1,0 +1,18 @@
+{
+    "jobs_dir": "trials/cheat",
+    "agents": [
+        {
+            "name": "codex",
+            "model_name": "openai/gpt-5.6-sol",
+            "kwargs": { "reasoning_effort": "xhigh" }
+        },
+        {
+            "name": "claude-code",
+            "model_name": "anthropic/claude-opus-5",
+            "kwargs": { "reasoning_effort": "max" }
+        }
+    ],
+    "tasks": [
+        { "path": "probe/docx-cheat" }
+    ]
+}

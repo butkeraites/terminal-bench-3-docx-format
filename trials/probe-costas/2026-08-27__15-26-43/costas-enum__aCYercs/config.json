@@ -1,0 +1,20 @@
+{
+    "task": {
+        "path": "probe/costas-enum"
+    },
+    "trial_name": "costas-enum__aCYercs",
+    "trials_dir": "trials/probe-costas/2026-08-27__15-26-43",
+    "agent": {
+        "name": "claude-code",
+        "model_name": "anthropic/claude-opus-5",
+        "kwargs": {
+            "reasoning_effort": "max"
+        },
+        "env": {
+            "CLAUDE_FORCE_OAUTH": "****",
+            "CLAUDE_CODE_OAUTH_TOKEN": "sk-a****wAA",
+            "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "****"
+        }
+    },
+    "job_id": "df62c55b-e0aa-4610-9701-b362653f38f6"
+}

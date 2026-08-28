@@ -1,0 +1,123 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.5.2
+collected 8 items
+
+tests/test_state.py EEEEEEEE                                             [100%]
+
+==================================== ERRORS ====================================
+_______________ ERROR at setup of test_a_graded_run_was_recorded _______________
+
+    @pytest.fixture(scope="session")
+    def run() -> dict:
+        """The last graded run recorded by the judge."""
+        if not LOG_PATH.exists():
+>           pytest.fail(
+                f"{LOG_PATH} is missing: no graded run was ever started. "
+                "The service must be running and POST /grade must have been called."
+            )
+E           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.
+
+tests/test_state.py:54: Failed
+_______________ ERROR at setup of test_the_verdict_log_is_intact _______________
+
+    @pytest.fixture(scope="session")
+    def run() -> dict:
+        """The last graded run recorded by the judge."""
+        if not LOG_PATH.exists():
+>           pytest.fail(
+                f"{LOG_PATH} is missing: no graded run was ever started. "
+                "The service must be running and POST /grade must have been called."
+            )
+E           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.
+
+tests/test_state.py:54: Failed
+______________ ERROR at setup of test_the_run_used_a_fresh_nonce _______________
+
+    @pytest.fixture(scope="session")
+    def run() -> dict:
+        """The last graded run recorded by the judge."""
+        if not LOG_PATH.exists():
+>           pytest.fail(
+                f"{LOG_PATH} is missing: no graded run was ever started. "
+                "The service must be running and POST /grade must have been called."
+            )
+E           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.
+
+tests/test_state.py:54: Failed
+_____________ ERROR at setup of test_every_submission_was_answered _____________
+
+    @pytest.fixture(scope="session")
+    def run() -> dict:
+        """The last graded run recorded by the judge."""
+        if not LOG_PATH.exists():
+>           pytest.fail(
+                f"{LOG_PATH} is missing: no graded run was ever started. "
+                "The service must be running and POST /grade must have been called."
+            )
+E           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.
+
+tests/test_state.py:54: Failed
+_____________ ERROR at setup of test_no_call_errored_or_timed_out ______________
+
+    @pytest.fixture(scope="session")
+    def run() -> dict:
+        """The last graded run recorded by the judge."""
+        if not LOG_PATH.exists():
+>           pytest.fail(
+                f"{LOG_PATH} is missing: no graded run was ever started. "
+                "The service must be running and POST /grade must have been called."
+            )
+E           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.
+
+tests/test_state.py:54: Failed
+_______________ ERROR at setup of test_every_verdict_is_correct ________________
+
+    @pytest.fixture(scope="session")
+    def run() -> dict:
+        """The last graded run recorded by the judge."""
+        if not LOG_PATH.exists():
+>           pytest.fail(
+                f"{LOG_PATH} is missing: no graded run was ever started. "
+                "The service must be running and POST /grade must have been called."
+            )
+E           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.
+
+tests/test_state.py:54: Failed
+_ ERROR at setup of test_the_rejection_reason_is_right_where_the_accept_flag_is _
+
+    @pytest.fixture(scope="session")
+    def run() -> dict:
+        """The last graded run recorded by the judge."""
+        if not LOG_PATH.exists():
+>           pytest.fail(
+                f"{LOG_PATH} is missing: no graded run was ever started. "
+                "The service must be running and POST /grade must have been called."
+            )
+E           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.
+
+tests/test_state.py:54: Failed
+_____________ ERROR at setup of test_latency_stayed_within_budget ______________
+
+    @pytest.fixture(scope="session")
+    def run() -> dict:
+        """The last graded run recorded by the judge."""
+        if not LOG_PATH.exists():
+>           pytest.fail(
+                f"{LOG_PATH} is missing: no graded run was ever started. "
+                "The service must be running and POST /grade must have been called."
+            )
+E           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.
+
+tests/test_state.py:54: Failed
+=========================== short test summary info ============================
+ERROR tests/test_state.py::test_a_graded_run_was_recorded - Failed: /shared/v...
+ERROR tests/test_state.py::test_the_verdict_log_is_intact - Failed: /shared/v...
+ERROR tests/test_state.py::test_the_run_used_a_fresh_nonce - Failed: /shared/...
+ERROR tests/test_state.py::test_every_submission_was_answered - Failed: /shar...
+ERROR tests/test_state.py::test_no_call_errored_or_timed_out - Failed: /share...
+ERROR tests/test_state.py::test_every_verdict_is_correct - Failed: /shared/ve...
+ERROR tests/test_state.py::test_the_rejection_reason_is_right_where_the_accept_flag_is
+ERROR tests/test_state.py::test_latency_stayed_within_budget - Failed: /share...
+============================== 8 errors in 0.05s ===============================

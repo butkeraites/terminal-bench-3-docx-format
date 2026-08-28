@@ -1,0 +1,8 @@
+{
+    "agents": [
+        { "name": "nop" }
+    ],
+    "tasks": [
+        { "path": "probe/docx-format" }
+    ]
+}

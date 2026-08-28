@@ -1,0 +1,18 @@
+{
+    "task": {
+        "path": "probe/docx-format"
+    },
+    "trial_name": "docx-format__CqLe4Rp",
+    "trials_dir": "trials/cx-2/2026-08-28__10-21-18",
+    "agent": {
+        "name": "codex",
+        "model_name": "openai/gpt-5.6-sol",
+        "kwargs": {
+            "reasoning_effort": "xhigh"
+        },
+        "env": {
+            "CODEX_FORCE_AUTH_JSON": "****"
+        }
+    },
+    "job_id": "782c1235-293a-4467-a41c-f589d565513a"
+}

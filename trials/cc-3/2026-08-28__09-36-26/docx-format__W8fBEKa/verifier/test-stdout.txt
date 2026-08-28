@@ -1,0 +1,134 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.5.2
+collected 23 items
+
+tests/test_state.py ..................FF.FF                              [100%]
+
+=================================== FAILURES ===================================
+____________ test_each_letter_sits_beside_the_image_it_labels[A-0] _____________
+
+page = <visual.Page object at 0x7ff61653ecf0>
+figures = [(345,412)-(894,786), (625,943)-(937,1024)], letter_name = 'A'
+index = 0
+
+    @pytest.mark.parametrize("letter_name,index", [("A", 0), ("B", 1)])
+    def test_each_letter_sits_beside_the_image_it_labels(page, figures, letter_name, index):
+        letters = {t: r for r, t in page.text_boxes() if t in ("A", "B")}
+        assert letter_name in letters, f"letter {letter_name} is not on the page"
+        letter, figure = letters[letter_name], figures[index]
+        gap_x = max(0, letter.x0 - figure.x1, figure.x0 - letter.x1)
+        gap_y = max(0, letter.y0 - figure.y1, figure.y0 - letter.y1)
+>       assert gap_x <= MAX_LETTER_GAP and gap_y <= MAX_LETTER_GAP, (
+            f"letter {letter_name} at {letter} is {gap_x}px horizontally and {gap_y}px "
+            f"vertically from the image it labels at {figure} — it reads as unrelated"
+        )
+E       AssertionError: letter A at (1124,393)-(1174,468) is 230px horizontally and 0px vertically from the image it labels at (345,412)-(894,786) — it reads as unrelated
+E       assert (230 <= 90)
+
+tests/test_state.py:300: AssertionError
+____________ test_each_letter_sits_beside_the_image_it_labels[B-1] _____________
+
+page = <visual.Page object at 0x7ff61653ecf0>
+figures = [(345,412)-(894,786), (625,943)-(937,1024)], letter_name = 'B'
+index = 1
+
+    @pytest.mark.parametrize("letter_name,index", [("A", 0), ("B", 1)])
+    def test_each_letter_sits_beside_the_image_it_labels(page, figures, letter_name, index):
+        letters = {t: r for r, t in page.text_boxes() if t in ("A", "B")}
+        assert letter_name in letters, f"letter {letter_name} is not on the page"
+        letter, figure = letters[letter_name], figures[index]
+        gap_x = max(0, letter.x0 - figure.x1, figure.x0 - letter.x1)
+        gap_y = max(0, letter.y0 - figure.y1, figure.y0 - letter.y1)
+>       assert gap_x <= MAX_LETTER_GAP and gap_y <= MAX_LETTER_GAP, (
+            f"letter {letter_name} at {letter} is {gap_x}px horizontally and {gap_y}px "
+            f"vertically from the image it labels at {figure} — it reads as unrelated"
+        )
+E       AssertionError: letter B at (1124,925)-(1174,1000) is 187px horizontally and 0px vertically from the image it labels at (625,943)-(937,1024) — it reads as unrelated
+E       assert (187 <= 90)
+
+tests/test_state.py:300: AssertionError
+__________________ test_both_engines_dress_the_headings_alike __________________
+
+page = <visual.Page object at 0x7ff61653ecf0>
+second_rendering = <visual.Page object at 0x7ff5d0f1e710>
+
+    def test_both_engines_dress_the_headings_alike(page, second_rendering):
+        """Heading ink that differs between engines is ink the document never chose."""
+        first = Profile.read(page).headings
+        second = Profile.read(second_rendering).headings
+        assert first and second, "no heading plates found in one of the renderings"
+    
+        for number, (a, b) in enumerate(zip(first, second), 1):
+>           assert a.ink_is_dark == b.ink_is_dark, (
+                f"heading {number} is set in {'dark' if a.ink_is_dark else 'light'} ink "
+                f"by one engine and {'dark' if b.ink_is_dark else 'light'} by another — "
+                f"the document does not state the colour, so each reader gets its own"
+            )
+E           AssertionError: heading 1 is set in dark ink by one engine and light by another — the document does not state the colour, so each reader gets its own
+E           assert True == False
+E            +  where True = HeadingStyle(height=34, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907).ink_is_dark
+E            +  and   False = HeadingStyle(height=34, left_inset=152, ink_is_dark=False, contrast=0.5385620892047882).ink_is_dark
+
+tests/test_state.py:368: AssertionError
+_________________ test_both_engines_place_the_furniture_alike __________________
+
+page = <visual.Page object at 0x7ff61653ecf0>
+second_rendering = <visual.Page object at 0x7ff5d0f1e710>
+
+    def test_both_engines_place_the_furniture_alike(page, second_rendering):
+        """Page furniture that moves between engines is furniture placed by chance."""
+        first = Profile.read(page).furniture
+        second = Profile.read(second_rendering).furniture
+        # Only the left bar's top edge. It butts against the banner, so a
+        # disagreement there is visible. The footer bar's own position drifts ~12px
+        # between these engines even for the reference document — they compute the
+        # usable body height differently — and that drift is hidden under the bar
+        # itself. Asserting on it would fail correct documents.
+        for name in ("left_bar",):
+            a, b = getattr(first, name), getattr(second, name)
+            assert a is not None and b is not None, f"{name} was not found in one rendering"
+            # Only the edge that has a visible relationship is compared. The left
+            # bar's top butts against the banner and any disagreement there shows;
+            # its foot runs under the footer bar, and the two engines put it at
+            # y=1655 and y=1697 even for the reference, because they compute the
+            # usable body height differently. That difference is invisible and is
+            # not the document's fault.
+>           assert abs(a.y0 - b.y0) <= 8, (
+                f"{name} starts at y={a.y0} under one engine and y={b.y0} under "
+                f"another — where it begins is not fixed by the document"
+            )
+E           AssertionError: left_bar starts at y=178 under one engine and y=155 under another — where it begins is not fixed by the document
+E           assert 23 <= 8
+E            +  where 23 = abs((178 - 155))
+E            +    where 178 = (0,178)-(51,1656).y0
+E            +    and   155 = (0,155)-(51,1656).y0
+
+tests/test_state.py:393: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_state.py::test_required_text_is_present[Evid\xeancias de ocorrencia]
+PASSED tests/test_state.py::test_required_text_is_present[Usu\xe1rio 123.3345]
+PASSED tests/test_state.py::test_required_text_is_present[Print da falha]
+PASSED tests/test_state.py::test_required_text_is_present[Evid\xeancia do tempo]
+PASSED tests/test_state.py::test_required_text_is_present[Reconhecimento de Fala (Detalhe A)]
+PASSED tests/test_state.py::test_required_text_is_present[hora 6pm (mostrada no Detalhe B)]
+PASSED tests/test_state.py::test_the_name_reaches_the_footer
+PASSED tests/test_state.py::test_the_placeholders_are_gone
+PASSED tests/test_state.py::test_the_page_furniture_is_placed_as_in_the_template
+PASSED tests/test_state.py::test_the_left_bar_starts_below_the_banner
+PASSED tests/test_state.py::test_headings_are_dressed_like_the_template
+PASSED tests/test_state.py::test_the_banner_survived
+PASSED tests/test_state.py::test_each_image_keeps_its_aspect_ratio[0-1.4719101123595506]
+PASSED tests/test_state.py::test_each_image_keeps_its_aspect_ratio[1-3.8461538461538463]
+PASSED tests/test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image
+PASSED tests/test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter
+PASSED tests/test_state.py::test_no_body_text_is_covered_by_an_image
+PASSED tests/test_state.py::test_the_frame_hugs_the_image_it_borders
+PASSED tests/test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it
+FAILED tests/test_state.py::test_each_letter_sits_beside_the_image_it_labels[A-0]
+FAILED tests/test_state.py::test_each_letter_sits_beside_the_image_it_labels[B-1]
+FAILED tests/test_state.py::test_both_engines_dress_the_headings_alike - Asse...
+FAILED tests/test_state.py::test_both_engines_place_the_furniture_alike - Ass...
+=================== 4 failed, 19 passed in 77.21s (0:01:17) ====================

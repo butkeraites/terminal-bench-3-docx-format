@@ -1,0 +1,124 @@
+{
+    "id": "6b486037-f1bc-475c-bb87-581eabebb47b",
+    "task_name": "probe/docx-format",
+    "trial_name": "docx-format__aryp2gW",
+    "trial_uri": "file:///home/barbaruiva/Documents/klavis-tb3/trials/probe-docx-generic/2026-08-28__06-32-37/docx-format__aryp2gW",
+    "task_id": {
+        "path": "probe/docx-format"
+    },
+    "source": null,
+    "task_checksum": "7e5a772cff8dc164d011498753d3cc4f82f787899d24b1c37a0d9bdf7e6b934c",
+    "config": {
+        "task": {
+            "path": "probe/docx-format",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "docx-format__aryp2gW",
+        "trials_dir": "trials/probe-docx-generic/2026-08-28__06-32-37",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "claude-code",
+            "import_path": null,
+            "model_name": "anthropic/claude-opus-5",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "reasoning_effort": "max"
+            },
+            "env": {
+                "CLAUDE_FORCE_OAUTH": "****",
+                "CLAUDE_CODE_OAUTH_TOKEN": "sk-a****wAA",
+                "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "****"
+            },
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "e2963bed-ae17-448a-a9a3-91308f323cd3",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "claude-code",
+        "version": "2.1.250",
+        "model_info": {
+            "name": "claude-opus-5",
+            "provider": "anthropic"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 17511444,
+        "n_cache_tokens": 17225771,
+        "n_output_tokens": 198376,
+        "cost_usd": 16.428055500000003,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.0
+        }
+    },
+    "verifier_environment_mode": "separate",
+    "exception_info": null,
+    "started_at": "2026-08-28T10:32:37.306983Z",
+    "finished_at": "2026-08-28T11:21:39.757468Z",
+    "environment_setup": {
+        "started_at": "2026-08-28T10:32:37.325313Z",
+        "finished_at": "2026-08-28T10:32:41.964532Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-08-28T10:32:41.964595Z",
+        "finished_at": "2026-08-28T10:34:57.624884Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-08-28T10:34:57.625079Z",
+        "finished_at": "2026-08-28T11:20:30.231225Z"
+    },
+    "verifier": {
+        "started_at": "2026-08-28T11:20:42.359971Z",
+        "finished_at": "2026-08-28T11:21:39.757421Z"
+    },
+    "step_results": null
+}

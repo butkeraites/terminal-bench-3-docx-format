@@ -1,0 +1,109 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-08-27T15:56:59.218773+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 8,
+            "passed": 0,
+            "failed": 8,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1787846219161,
+            "stop": 1787846219218
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_a_graded_run_was_recorded",
+                "status": "failed",
+                "duration": 7,
+                "start": 1787846219193,
+                "stop": 1787846219200,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def run() -> dict:\n        \"\"\"The last graded run recorded by the judge.\"\"\"\n        if not LOG_PATH.exists():\n>           pytest.fail(\n                f\"{LOG_PATH} is missing: no graded run was ever started. \"\n                \"The service must be running and POST /grade must have been called.\"\n            )\nE           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.\n\ntests/test_state.py:54: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_verdict_log_is_intact",
+                "status": "failed",
+                "duration": 3,
+                "start": 1787846219200,
+                "stop": 1787846219203,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def run() -> dict:\n        \"\"\"The last graded run recorded by the judge.\"\"\"\n        if not LOG_PATH.exists():\n>           pytest.fail(\n                f\"{LOG_PATH} is missing: no graded run was ever started. \"\n                \"The service must be running and POST /grade must have been called.\"\n            )\nE           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.\n\ntests/test_state.py:54: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_run_used_a_fresh_nonce",
+                "status": "failed",
+                "duration": 2,
+                "start": 1787846219203,
+                "stop": 1787846219205,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def run() -> dict:\n        \"\"\"The last graded run recorded by the judge.\"\"\"\n        if not LOG_PATH.exists():\n>           pytest.fail(\n                f\"{LOG_PATH} is missing: no graded run was ever started. \"\n                \"The service must be running and POST /grade must have been called.\"\n            )\nE           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.\n\ntests/test_state.py:54: Failed"
+            },
+            {
+                "name": "test_state.py::test_every_submission_was_answered",
+                "status": "failed",
+                "duration": 3,
+                "start": 1787846219205,
+                "stop": 1787846219208,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def run() -> dict:\n        \"\"\"The last graded run recorded by the judge.\"\"\"\n        if not LOG_PATH.exists():\n>           pytest.fail(\n                f\"{LOG_PATH} is missing: no graded run was ever started. \"\n                \"The service must be running and POST /grade must have been called.\"\n            )\nE           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.\n\ntests/test_state.py:54: Failed"
+            },
+            {
+                "name": "test_state.py::test_no_call_errored_or_timed_out",
+                "status": "failed",
+                "duration": 3,
+                "start": 1787846219208,
+                "stop": 1787846219211,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def run() -> dict:\n        \"\"\"The last graded run recorded by the judge.\"\"\"\n        if not LOG_PATH.exists():\n>           pytest.fail(\n                f\"{LOG_PATH} is missing: no graded run was ever started. \"\n                \"The service must be running and POST /grade must have been called.\"\n            )\nE           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.\n\ntests/test_state.py:54: Failed"
+            },
+            {
+                "name": "test_state.py::test_every_verdict_is_correct",
+                "status": "failed",
+                "duration": 3,
+                "start": 1787846219211,
+                "stop": 1787846219214,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def run() -> dict:\n        \"\"\"The last graded run recorded by the judge.\"\"\"\n        if not LOG_PATH.exists():\n>           pytest.fail(\n                f\"{LOG_PATH} is missing: no graded run was ever started. \"\n                \"The service must be running and POST /grade must have been called.\"\n            )\nE           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.\n\ntests/test_state.py:54: Failed"
+            },
+            {
+                "name": "test_state.py::test_the_rejection_reason_is_right_where_the_accept_flag_is",
+                "status": "failed",
+                "duration": 2,
+                "start": 1787846219214,
+                "stop": 1787846219216,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def run() -> dict:\n        \"\"\"The last graded run recorded by the judge.\"\"\"\n        if not LOG_PATH.exists():\n>           pytest.fail(\n                f\"{LOG_PATH} is missing: no graded run was ever started. \"\n                \"The service must be running and POST /grade must have been called.\"\n            )\nE           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.\n\ntests/test_state.py:54: Failed"
+            },
+            {
+                "name": "test_state.py::test_latency_stayed_within_budget",
+                "status": "failed",
+                "duration": 2,
+                "start": 1787846219216,
+                "stop": 1787846219218,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "@pytest.fixture(scope=\"session\")\n    def run() -> dict:\n        \"\"\"The last graded run recorded by the judge.\"\"\"\n        if not LOG_PATH.exists():\n>           pytest.fail(\n                f\"{LOG_PATH} is missing: no graded run was ever started. \"\n                \"The service must be running and POST /grade must have been called.\"\n            )\nE           Failed: /shared/verdict_log.json is missing: no graded run was ever started. The service must be running and POST /grade must have been called.\n\ntests/test_state.py:54: Failed"
+            }
+        ]
+    }
+}
