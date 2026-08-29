@@ -87,8 +87,12 @@ tasks/docx-format/     the submitted task
 adversarial/          red-team variant + scripted cheat, for the /cheat trials
   docx-cheat/          same task, red-team instruction, for the /cheat trials
 configs/               job configs for oracle, nop, /run and /cheat
-trials/  jobs/         raw harbor records for every run cited in the report
+trials/final*/         the trials this submission rests on
+trials/  jobs/         earlier records, kept but superseded — see REPORT.md §2
+checks/                oracle, nop and the two rubric checks
+authoring/             working files from building the reference document
 scripts/               utilities, incl. the trial-log recovery in REPORT.md's appendix
+docs/  verifier-core/  belong to the archived second task, not to this one
 archive/certificate-verifier-slo/   a second, complete task — NOT the submission
 ```
 

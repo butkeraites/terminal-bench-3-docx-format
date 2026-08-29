@@ -158,6 +158,26 @@ exaggerating it.
 
 Codex is not close. It fails 6–9 tests, and fails the same things every run.
 
+### The task was hardened twice to get here
+
+Two earlier drafts were solved outright by Claude Code. Their records are in the
+repository and score **reward 1**, which is why they are called out here rather
+than left to be stumbled on:
+
+| task digest | version | Claude Code | record |
+|---|---|---|---|
+| `sha256:64a82308…` | first draft | **reward 1**, 16 min | `trials/probe-docx/` |
+| `sha256:b38a7e72…` | second draft | **reward 1**, 22 min | `trials/probe-docx-pdf/` |
+| `sha256:5281161b…` | **submitted** | reward 0 in 3 of 3 | `trials/final/` |
+
+Each draft was tightened after the model beat it. The cross-engine agreement
+tests and the extracted-profile comparison came out of those two rounds.
+
+Two other `reward 1` entries exist and are not agent results:
+`checks/2026-08-28__23-41-24/` and `checks/rubric-after-fix/` are `harbor check`
+runs, where reward 1 means the rubric evaluator completed, not that the task
+passed the rubric. §3 gives their actual outcomes.
+
 ## 5. Failure analysis
 
 ### 5.1 A defect that was found and fixed before submitting
