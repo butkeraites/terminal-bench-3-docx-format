@@ -29,15 +29,23 @@ Category `document_processing`; 4 CPUs, 4 GB, network on; agent timeout 4 h;
 
 ## 2. Task identity
 
+Every trial in §4 recorded this digest in its `lock.json`:
+
 ```
 sha256:5281161bdce1275e43dbedee43025405e237fcfbe739dc8d7aa55e0066f56c5b
 ```
 
-Every trial in §4 recorded this digest in its `lock.json`, and the directory in
-this repository still hashes to it. The submitted task and the tested task are
-the same bytes.
+The directory now hashes to `sha256:2292ec7b94dd…`. Exactly one file differs,
+and it is `task.toml` — the `difficulty_explanation` was rewritten afterwards to
+add the argument in §4 about a single page being the floor of the problem. That
+field is review metadata: the agent never sees it and no test reads it.
+
+**Everything that determines what the agent does and what the tests assert —
+`instruction.md`, `environment/`, `tests/`, `solution/` — is byte-identical to
+what produced every result below.** Check it:
 
 ```bash
+git diff bf1c1d6..HEAD -- tasks/docx-format   # one line, in difficulty_explanation
 python -c "from harbor.publisher.packager import Packager; from pathlib import Path; \
 print(Packager.compute_content_hash(Path('tasks/docx-format'))[0])"
 ```
