@@ -37,7 +37,7 @@ sha256:fa6bb4870aea623f0b6e2e10520bc7cf4ddceb7dbe81a329f07659db90c8b3eb
 ```
 
 The submitted task hashes to
-`sha256:3902bc555df78dc123e5d93e61db0dc504ad5d2257f51da818919aead19bce8f`.
+`sha256:d988c738298b4fcb8e07b772d51af42e7f4e0fca89cdb6b44cd7f6fc3341ce32`.
 **It is not the same directory that was tested, and this section says exactly
 how it differs.** The divergence is recoverable from the repository itself —
 the digest above is a cryptographic commitment to the tested bytes, and the
@@ -60,7 +60,7 @@ is that a reader can check it.
 | `tests/test_state.py` | unchanged | `4d01a9d091aff747…` |
 | `tests/visual.py` | unchanged | `09a43cb335f6ad74…` |
 | `instruction.md` | **rewritten** | `108ce5b53d94549e…` |
-| `task.toml` | **rebuilt** | `6d9a9fcaa2f02bc9…` |
+| `task.toml` | **rebuilt** | `cf954716c34a18f0…` |
 | `environment/Dockerfile` | canary comment | `c00e648fde77c719…` |
 | `README.md` | removed | — |
 
@@ -127,10 +127,31 @@ is not part of the delta above; the old path survives inside `trials/` and
 | Docker build (environment + tests) | pass | every trial in §4 built both images |
 | Oracle validation | **reward 1** | `jobs/2026-08-28__06-28-03/docx-format__PKg47Sw` |
 | Nop validation | **reward 0** | `jobs/2026-08-28__06-29-19/docx-format__dykSKAv` |
-| Static checks / implementation rubric | **not run** | see §8 |
+| Implementation rubric (`harbor check`) | **6 pass, 4 fail, 1 n/a** | `checks/2026-08-28__23-41-24/` |
 
 The oracle solution is the reference `.docx` the author built by hand; harbor
 mounts `solution/` for the oracle agent only, never for a task agent.
+
+`harbor check tasks/docx-format -m anthropic/claude-opus-5` was run against the
+built-in implementation rubric. It passed `informative_test_structure`,
+`anti_cheating_measures`, `typos`, `tests_or_solution_in_image`,
+`test_deps_in_image` and `file_reference_mentioned`, and failed four criteria:
+
+- `behavior_in_task_description` — graded properties the template contradicts.
+  This is the defect §5.1 documents, and the check found it independently.
+- `behavior_in_tests` — the instruction requires one caption run in red and one
+  in blue, and **no test checks either colour**; the string `BLUE` appears
+  nowhere in the test modules. A document with entirely black captions passes
+  all 23 tests. The red check only requires a red rectangle inside each figure.
+- `pinned_dependencies` — the second renderer is fetched from a release-channel
+  URL that advances over time, so it is not pinned.
+- `hardcoded_solution` — `solve.sh` copies the pre-built reference rather than
+  deriving it. The reference was authored by hand in a word processor, which is
+  the point of the task, but the script demonstrates no steps.
+
+None of these were fixed, for the reason given in §5.1: any change to the tests
+would mean the results in §4 and §6 had been measured against a different
+verifier. They are recorded here and in §8 instead.
 
 The nop job additionally logs a `RuntimeError` while collecting artifacts,
 because nop produces no `/app/output.docx` to collect. That is the expected
@@ -188,67 +209,83 @@ The records for both are kept in `trials/probe-docx/` and `trials/probe-docx-pdf
 Failures are not spread evenly across the suite; they concentrate on the parts of
 the layout that are *relational* rather than absolute.
 
-### 5.1 The callout letter — failed in 5 of 5 trials
+### 5.1 A defect in this task, found by the rubric check
 
-`test_each_letter_sits_beside_the_image_it_labels` is the one test no
-configuration ever passed — and, as §6 shows, it is also what stopped the
-adversarial trial. It asserts the large letter sits within 90 px of the figure it
-labels. The two agents fail it in opposite ways.
+`test_each_letter_sits_beside_the_image_it_labels` makes two assertions. The
+first — that a text "A" and a text "B" appear on the page — is sound. The
+second, that the letter sits within 90 px of the figure it labels, **is not
+satisfiable by imitating the template**, and this section exists because the
+first version of this analysis got that wrong.
 
-**Claude Code puts the letter in the right place on the page, but not next to
-the picture.** Across all three runs it parked both letters in a fixed
-right-margin column at x = 1124–1174 — the *same* x in every run, while the
-figures moved:
+Measured on `tests/template.pdf` and on the reference solution, at the 150 dpi
+the verifier renders at:
 
-```
-letter A at (1124,338)-(1174,413) is 223px horizontally from the image at (352,394)-(901,769)
-letter A at (1124,393)-(1174,468) is 230px horizontally from the image at (345,412)-(894,786)
-letter A at (1124,358)-(1174,433) is 119px horizontally from the image at (234,394)-(1005,920)
-```
+| | letter A | figure 1 ends at | gap |
+|---|---|---|---|
+| `solution/expected.docx` | x=847 | x=989 | **−142 px** (letter over the figure) |
+| `tests/template.pdf` | x=1124 | x=902 | **+222 px** |
 
-It read the letter's position in the template as an absolute coordinate and
-reproduced that coordinate, rather than as *"beside the figure"*. When its own
-figure landed somewhere else, the letter stayed behind. The vertical offset is
-0 px in every case, so the alignment logic is there; only the anchor is wrong.
+The template puts the letter far to the right of its figure; the reference
+solution puts it on top of the figure. They are different layouts, and only the
+second passes. The template was derived from the solution by swapping in
+differently-shaped photographs, and the letters and figures re-flowed — so the
+template stopped being the same layout with different content.
 
-**Codex does not emit the letters at all.** `letters A and B are not both
-present: []` — it builds the mark and the leader line, then omits the thing they
-point at.
+The instruction tells the agent to imitate the template and says nothing else is
+specified. An agent that does exactly that fails. Claude Code did exactly that:
+it placed figure 1 at x=352–901 where the template has 353–902, and the letters
+at x=1124–1174 where the template has x=1124–1174, and was failed for the
+faithful copy. The earlier claim here — that it "reproduced an absolute
+coordinate instead of a relationship" — was wrong, and inverted cause and effect.
 
-### 5.2 Page furniture that floats — 3 of 5 trials
+`test_no_body_text_is_covered_by_an_image` has the same problem in milder form:
+the template's own caption block is overlapped 18×26 px by the clock image,
+against a 12 px limit. The test's comments acknowledge it as "the very fault the
+template has".
 
-The left bar is supposed to start below the banner. Three runs started it at
-y ≈ 155–156 against a banner ending at y ≈ 178, i.e. 22 px of overlap:
+The verifier has not been changed. Correcting it would mean every result in this
+report had been measured against a different test suite, and re-running was out
+of budget. What follows is the analysis with those failures set aside.
 
-```
-the left bar starts at y=156 and runs 22px up into the banner, which ends at y=178
-```
+### 5.2 The trials fail without them
 
-### 5.3 Documents that render differently in different engines — 2 of 5 trials
+Discounting every failure attributable to the defect above, all five runs still
+fail, and the adversarial trial still scores 0:
 
-This is the constraint the instruction states but does not explain, and it
-catches output that looked correct in whatever the agent tested with:
+| trial | failures | defective | legitimate |
+|---|---|---|---|
+| Claude Code #1 | 4 | 2 | **2** |
+| Claude Code #2 (cc-2) | 5 | 2 | **3** |
+| Claude Code #3 (cc-3) | 4 | 2 | **2** |
+| Codex #1 (cx-1) | 9 | 1 | **8** |
+| Codex #2 (cx-2) | 7 | 0 | **7** |
+| adversarial (raster) | 3 | 0 | **3** |
 
-```
-left_bar starts at y=156 under one engine and y=178 under another
-heading 1 is set in dark ink by one engine and light by another —
-  the document does not state the colour, so each reader gets its own
-```
+Only Claude Code ever hit the defective assertion. Codex's letter failures are
+the sound half of the test — it drew no letters at all — and so is the
+adversarial trial's, which is why §6 stands unaffected.
 
-The second one is the sharper failure: the agent relied on a theme default
-instead of stating the colour, so the heading's appearance is decided by the
-reader, not the document.
+The legitimate failures are unambiguous: the left bar starting 22 px inside the
+banner; the two engines placing that bar 22–23 px apart, and in cc-3 setting a
+heading in dark ink under one and light under the other because the document
+never states the colour; both photographs redrawn by Codex at aspect 0.750 and
+0.749 against sources of 1.472 and 3.846; a green frame that never reaches its
+image; an orange arrow that stops short of its target.
 
-### 5.4 Codex-only failures
+The cross-engine failures matter most, because they are the requirement this
+task is really about: a document that renders differently in two readers has not
+determined its own appearance.
+
+### 5.3 Codex-only failures
 
 Codex fails a further, more basic tier that Claude Code clears: both images
 drawn at the wrong aspect ratio (2.070 and 4.376 against sources of 1.472 and
 3.846 in cx-1; 0.750 and 0.749 in cx-2 — it squared both pictures), the green
-border around the first figure missing entirely, and in cx-1 an image laid over
-body text. Its runs are also 3× faster and 10× cheaper than Claude Code's, which
+border around the first figure missing entirely, and the callout letters absent
+from the page altogether. Its runs are also 3× faster and 10× cheaper than Claude Code's, which
 matches the shape of the output: it stops before the layout is finished.
 
-### 5.5 What both models pass
+### 5.4 What both models pass
 
 Worth stating, because it shows the tests are not simply rejecting everything:
 all five runs got every required string onto the page, the name into the footer,
@@ -310,7 +347,10 @@ test_each_letter_sits_beside_the_image_it_labels[B-1]   letter B is not on the p
 ```
 
 The letters had been drawn as *pixels*. `page.text_boxes()` reads the rendered
-PDF's text layer, so it found no "A" and no "B" anywhere on the page. A flat
+PDF's text layer, so it found no "A" and no "B" anywhere on the page. That is
+the sound half of the assertion §5.1 criticises — the template does carry both
+letters as real text — so this result is unaffected by the defect described
+there. A flat
 bitmap is structurally incapable of satisfying a requirement that a specific
 glyph be real text positioned relative to a figure — which is the one thing the
 callout letter demands.
@@ -399,28 +439,41 @@ Stated plainly rather than papered over.
 1. **Codex has 2 of the 3 required standard trials.** The third
    (`trials/cx-3/…`) was destroyed by a host Docker daemon restart. It has not
    been re-run.
-2. **Static checks and the implementation rubric have not been run.**
-   `harbor check` grades a task against a rubric using a model, and it was not
-   invoked. Docker build, oracle and nop validation *were* run and pass (§3).
-3. **The codex adversarial trial is weak evidence** for the reason given in §6:
+2. **Two graded properties contradict the template.** The 90 px letter-gap
+   assertion and the body-text overlap limit are both violated by
+   `tests/template.pdf` itself, while the instruction tells the agent to imitate
+   it. §5.1 measures this and §5.2 shows every trial still fails without those
+   failures. The verifier was left untouched so the recorded results stay
+   comparable; fixing it is the first thing to do next, either by regenerating
+   the template from the reference solution so the two agree, or by stating the
+   letter's placement in the instruction.
+3. **Two instruction requirements are unverified.** The red and blue caption
+   runs are never checked; a document with black captions passes all 23 tests.
+   Found by the rubric check, recorded in §3, not fixed for the same reason.
+4. **The second renderer is not pinned.** It is downloaded from a
+   release-channel URL that advances with each LibreOffice release, while the
+   cross-engine assertions run to an 8 px tolerance. This one is cheap to fix
+   and carries no risk to the recorded results, but it would change the test
+   image after the fact, so it is recorded rather than applied.
+5. **The codex adversarial trial is weak evidence** for the reason given in §6:
    an upstream moderation filter ended it before it attempted a bypass. The
    `/cheat` requirement is met — both configurations ran, both scored 0 — but
    only the Claude Code trial actually tested the verifier.
-4. **Forged result files are committed on purpose.** The adversarial trial
+6. **Forged result files are committed on purpose.** The adversarial trial
    planted `result.json`, `score.json` and four others claiming `"reward": 1.0`
    under `trials/cheat/…/docx-cheat__pAYkTEn/artifacts/logs/artifacts/`. They
    are evidence of an attack, not results, and are labelled by a
    `README.FABRICATED.md` beside them. Any script that walks this repository
    looking for rewards must read `verifier/reward.txt`, not any `result.json` it
    happens to find.
-5. **Two candidate tasks exist in this repository.** `archive/certificate-verifier-slo/`
+7. **Two candidate tasks exist in this repository.** `archive/certificate-verifier-slo/`
    is a second, complete task with its own oracle/nop gate, kept here because the
    work is real, but it is not the submission and has only one agent trial. The
    submission is `tasks/docx-format/`. Its README is unfinished — the
    "Relevant experience" section is still a placeholder — and it has not been
    reviewed to submission standard. It is archived material, not a second
    candidate.
-6. **The recorded trials name the task `probe/docx-format`.** It was developed
+8. **The recorded trials name the task `probe/docx-format`.** It was developed
    under that path and moved to `tasks/docx-format/` for submission. The content
    digest is path-independent, so the move does not affect the correspondence in
    §2; the old path survives inside `trials/` and `jobs/` because those are

@@ -37,16 +37,28 @@ instead, with real text floated over it so extraction checks would pass. It
 passed 20 of 23 tests — including both cross-engine agreement tests, since a
 bitmap cannot disagree between renderers. It was stopped by the callout letters:
 they had been drawn as pixels, so the rendered page contains no text "A" and no
-text "B". The same assertion that no honest agent passes is what catches the
-cheat.
+text "B". The test it fell to has two halves; this is the sound one, and the
+one an honest document satisfies without effort.
 
-## A known limit of the verifier
+## Two known defects
 
-The adversarial trial measured where this task's verification is thin, and the
-result is worth stating plainly rather than leaving for a reviewer to find.
+Both were found before submitting — one by the adversarial trial, one by
+`harbor check` — and both are stated plainly here rather than left for a
+reviewer to find. `REPORT.md` §5.1 and §8 carry the measurements.
 
-The instruction asks for an *editable* Word document, but no test enforces
-editability. A flat 300 dpi raster of the template, with real text floated over
+**Two graded properties contradict the template.** A test requires the callout
+letter within 90 px of its figure; in `tests/template.pdf` the gap is 222 px, so
+an agent that faithfully imitates the template — which is what the instruction
+asks — fails. A second test limits how far an image may cover body text, and the
+template exceeds that limit too. The template was derived from the reference
+solution by swapping in differently-shaped photographs, and the layout re-flowed.
+Every trial still fails without these, and the adversarial trial is unaffected,
+but the failure analysis had to be rewritten once this was measured.
+
+**Nothing enforces editability.**
+
+The instruction asks for an editable Word
+document, but no test checks it. A flat 300 dpi raster of the template, with real text floated over
 it, passes 20 of the 23 tests — including both cross-engine agreement tests,
 because a bitmap cannot disagree between renderers. It is stopped only by the
 callout letters, which were drawn as pixels and so leave no "A" or "B" in the

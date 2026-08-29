@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "/tmp/harbor-check-agm5tt3z/check-docx-format"
+    },
+    "trial_name": "check-docx-format__sFQcf8k",
+    "trials_dir": "checks/2026-08-28__23-41-24",
+    "agent": {
+        "name": "claude-code",
+        "model_name": "anthropic/claude-opus-5"
+    },
+    "job_id": "bd8705cf-d46f-47cf-a8b8-27770cad9546"
+}

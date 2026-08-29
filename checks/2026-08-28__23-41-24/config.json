@@ -1,0 +1,15 @@
+{
+    "jobs_dir": "checks",
+    "quiet": true,
+    "agents": [
+        {
+            "name": "claude-code",
+            "model_name": "anthropic/claude-opus-5"
+        }
+    ],
+    "tasks": [
+        {
+            "path": "/tmp/harbor-check-agm5tt3z/check-docx-format"
+        }
+    ]
+}
