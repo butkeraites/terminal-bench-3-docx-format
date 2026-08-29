@@ -59,30 +59,46 @@ they measured a different test suite. Everything cited below comes from
 | Docker build (environment + tests) | pass | every trial below built both images |
 | Oracle validation | **reward 1**, 23 passed | `checks/oracle-after-fix/2026-08-29__00-04-10/` |
 | Nop validation | **reward 0** | `checks/nop-after-fix/2026-08-29__03-10-26/` |
-| Implementation rubric (`harbor check`) | 6 pass, 4 fail, 1 n/a — one since fixed | `checks/2026-08-28__23-41-24/` |
+| Implementation rubric (`harbor check`) | 6 pass, 4 fail, 1 n/a — before and after the §5.1 fix | `checks/2026-08-28__23-41-24/`, `checks/rubric-after-fix/` |
 
 The oracle solution is the reference `.docx`, authored by hand in a word
 processor; harbor mounts `solution/` for the oracle agent only.
 
-`harbor check tasks/docx-format -m anthropic/claude-opus-5` ran against the
-version that preceded the §5.1 fix. It passed `informative_test_structure`,
-`anti_cheating_measures`, `typos`, `tests_or_solution_in_image`,
-`test_deps_in_image` and `file_reference_mentioned`. It failed four:
+`harbor check tasks/docx-format -m anthropic/claude-opus-5` was run twice: once
+before the §5.1 fix (`checks/2026-08-28__23-41-24/`) and once after
+(`checks/rubric-after-fix/`). Both times 6 pass, 4 fail, 1 not applicable, but
+the composition changed.
 
-- `behavior_in_task_description` — **since fixed.** This is the defect §5.1
-  documents; the check found it independently and the assertion responsible has
-  been removed.
+The fix worked. The first run's central complaint — the callout letter required
+within 90 px of its figure while the template puts it 222 px away — is gone from
+the second. That was the defect, and it was found by this check.
+
+Still failing after the fix, with what each is worth:
+
 - `behavior_in_tests` — the instruction requires one caption run in red and one
-  in blue, and no test checks either colour. `BLUE` appears nowhere in the test
-  modules. A document with entirely black captions passes all 23 tests. **Still
-  open** (§8).
-- `pinned_dependencies` — the second renderer is fetched from a release-channel
-  URL that advances over time. **Still open** (§8).
+  in blue and **no test checks either colour**; `BLUE` appears nowhere in the
+  test modules, and the red check only requires a red rectangle inside a figure,
+  so a document with entirely black caption text passes all 23 tests. This is
+  correct and unfixed (§8).
+- `pinned_dependencies` — the second renderer comes from a release-channel URL
+  that advances over time. Correct and unfixed (§8).
 - `hardcoded_solution` — `solve.sh` copies the reference rather than deriving
-  it. The reference was built by hand in Word, which is the point of the task,
-  but the script demonstrates no steps.
+  it. Inherent to the task: the reference was authored by hand in a word
+  processor, which is the work being benchmarked.
+- `behavior_in_task_description` — four properties said to be neither stated nor
+  derivable from the template. They are not equally sound:
 
-The check has not been re-run since the fix.
+| complaint | verdict |
+|---|---|
+| `test_no_body_text_is_covered_by_an_image` | **valid.** The template's own caption is overlapped 18×26 px by the clock image. Documented as a known gap (§8) and left in place deliberately. |
+| `test_the_second_figure_precedes_the_caption_that_refers_to_it` | **not valid.** Measured on `tests/template.pdf`: figure 2 starts at y=1194, its caption at y=1292. The template satisfies the property, so imitating it produces the property. |
+| frame padding (`MAX_FRAME_PADDING = 70`) | weak. Claude Code passed this test in all three runs. |
+| `test_each_letter_is_real_text_on_the_page` | weak. Claude Code passed this test in all three runs, and the template's letters are real text. |
+
+The contributing guide anticipates this: "The judge can be wrong if it misses
+something fundamentally challenging about the task, but you should be able to
+explain what makes your task hard to the maintainers." The valid complaint is
+carried in §8; the others are answered by measurement above.
 
 ## 4. Standard agent trials (`/run`)
 
@@ -291,9 +307,9 @@ Stated plainly rather than papered over.
    in the same way §5.1 describes, less severely. Left in place deliberately.
 6. **The Codex adversarial trial is weak evidence** — a provider moderation
    block, not the verifier, ended it (§6).
-7. **The rubric check has not been re-run** since the §5.1 fix, so
-   `behavior_in_task_description` is fixed by measurement rather than by a fresh
-   rubric pass.
+7. **`behavior_in_task_description` still fails the rubric after the fix**, on
+   four grounds of which one is sound — the body-text overlap in item 5 above.
+   §3 answers the other three by measurement.
 8. **Forged result files are committed on purpose.** The earlier adversarial
    trial planted `result.json`, `score.json` and four others claiming
    `"reward": 1.0` under

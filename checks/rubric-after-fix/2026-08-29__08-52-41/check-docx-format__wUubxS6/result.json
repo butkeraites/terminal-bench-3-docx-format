@@ -1,0 +1,117 @@
+{
+    "id": "f068d71b-b954-44a4-a90a-b90b83196194",
+    "task_name": "check-docx-format",
+    "trial_name": "check-docx-format__wUubxS6",
+    "trial_uri": "file:///home/barbaruiva/Documents/klavis-tb3/checks/rubric-after-fix/2026-08-29__08-52-41/check-docx-format__wUubxS6",
+    "task_id": {
+        "path": "/tmp/harbor-check-vlqw1ma1/check-docx-format"
+    },
+    "source": null,
+    "task_checksum": "01af7e8478f039558e5fa1b05714563baac67459aa7d478586db8068842c2c06",
+    "config": {
+        "task": {
+            "path": "/tmp/harbor-check-vlqw1ma1/check-docx-format",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "check-docx-format__wUubxS6",
+        "trials_dir": "checks/rubric-after-fix/2026-08-29__08-52-41",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "claude-code",
+            "import_path": null,
+            "model_name": "anthropic/claude-opus-5",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "9c66ca3a-dc64-4020-8986-a67fc5c5524d",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "claude-code",
+        "version": "2.1.251",
+        "model_info": {
+            "name": "claude-opus-5",
+            "provider": "anthropic"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 469832,
+        "n_cache_tokens": 429874,
+        "n_output_tokens": 11940,
+        "cost_usd": 0.912887,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-08-29T12:52:41.562263Z",
+    "finished_at": "2026-08-29T12:57:27.302440Z",
+    "environment_setup": {
+        "started_at": "2026-08-29T12:52:41.578945Z",
+        "finished_at": "2026-08-29T12:52:42.576321Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-08-29T12:52:42.576389Z",
+        "finished_at": "2026-08-29T12:53:58.361262Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-08-29T12:53:58.361424Z",
+        "finished_at": "2026-08-29T12:57:15.181066Z"
+    },
+    "verifier": {
+        "started_at": "2026-08-29T12:57:15.538878Z",
+        "finished_at": "2026-08-29T12:57:15.743618Z"
+    },
+    "step_results": null
+}

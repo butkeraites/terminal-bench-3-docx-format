@@ -1,0 +1,15 @@
+{
+    "jobs_dir": "checks/rubric-after-fix",
+    "quiet": true,
+    "agents": [
+        {
+            "name": "claude-code",
+            "model_name": "anthropic/claude-opus-5"
+        }
+    ],
+    "tasks": [
+        {
+            "path": "/tmp/harbor-check-vlqw1ma1/check-docx-format"
+        }
+    ]
+}

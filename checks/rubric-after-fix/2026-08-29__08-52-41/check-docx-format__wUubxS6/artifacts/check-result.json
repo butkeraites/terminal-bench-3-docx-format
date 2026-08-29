@@ -1,0 +1,46 @@
+{
+  "behavior_in_task_description": {
+    "outcome": "fail",
+    "explanation": "The instruction states the output path, the exact strings, the image files and the cross-renderer requirement, and it delegates layout to the template ('Nothing else is specified... to match the template'). But several graded properties are neither stated nor derivable from that template. test_no_body_text_is_covered_by_an_image forbids an image biting more than 12px into a text line, and its own docstring calls this 'the very fault the template has' — I confirmed on tests/template.pdf that the caption 'A hora 3 (mostrada no Detalhe B)...' is overlapped 18x26px by figure 2, so a document that faithfully imitates the reference (which is what the instruction asks for) fails this test. Likewise test_the_second_figure_precedes_the_caption_that_refers_to_it and the frame-padding limit (MAX_FRAME_PADDING=70) encode designer judgements the instruction never mentions, and test_each_letter_is_real_text_on_the_page requires the callout letters to exist in the text layer (only faintly implied by 'editable Word document')."
+  },
+  "behavior_in_tests": {
+    "outcome": "fail",
+    "explanation": "Most of the instruction is well covered: the six required phrases, the footer name replacement, the two images with red detail marks, the orange arrows, the A/B callouts, the page furniture, and the 'same page in more than one processor' requirement (two LibreOffice engines). However, two explicitly itemised requirements are untested: '\"Reconhecimento de Fala (Detalhe A)\" should be in red' and '\"hora 6pm (mostrada no Detalhe B)\" should be in blue'. The tests only assert those phrases appear in the text layer; no check inspects caption run colour (page.regions(RED) findings must lie inside a figure, so red caption text would not count, and no blue is checked at all). The instruction's requirement that the highlight sit on a specific detail ('Reconhecimento de Fala' title text, '6:00 PM') is also only checked as 'a red rectangle somewhere on the image'."
+  },
+  "informative_test_structure": {
+    "outcome": "pass",
+    "explanation": "test_state.py is organised into clearly labelled banner sections ('what the page says', 'the template's visual language', 'the two replacement images', 'legibility', 'composition', 'ambiguity'), test names are sentences describing the property, and every threshold carries a comment with the measurements that justify it. visual.py and style.py are documented modules with narrow responsibilities and explanatory docstrings, and failure messages print the offending geometry. Minor nit: tests/perturb.py is dead code — nothing imports it, and it only survives as an approach the comments say was discarded."
+  },
+  "anti_cheating_measures": {
+    "outcome": "pass",
+    "explanation": "The runtime image copies only environment/assets (template.pdf plus the two replacement PNGs); solution/expected.docx and tests/ never reach it, and solve.sh is mounted only for the oracle. Grading is pixel arithmetic on the rendered PDF, and the expectations are re-extracted from the template at test time by the same Profile extractor rather than hard-coded, so there is no answer string to grep for and no way to satisfy the checks without actually laying the document out. The only network fetch (the AppImage) is a renderer, not answer data."
+  },
+  "structured_data_schema": {
+    "outcome": "not_applicable",
+    "explanation": "The deliverable is a rendered DOCX, not an API/JSON/CSV/DB payload, so there is no structured schema to document. The content that must appear is nonetheless enumerated normatively in instruction.md (title, name, two section headings, two captions with the coloured spans, both image files)."
+  },
+  "pinned_dependencies": {
+    "outcome": "fail",
+    "explanation": "The pip installs are exactly pinned in both images (python-docx==1.2.0, lxml==6.1.2, pillow==11.3.0, pymupdf==1.28.2; pytest==9.1.1, pytest-json-ctrf==0.5.2, numpy==2.2.3, scipy==1.15.2) and both use the same python:3.13-slim-bookworm base. But tests/Dockerfile curls https://appimages.libreitalia.org/LibreOffice-still.basic-x86_64.AppImage — an unversioned release-channel URL whose contents change over time. That build is the second renderer for test_both_engines_dress_the_headings_alike and test_both_engines_place_the_furniture_alike, which compare to an 8px tolerance, so the graded outcome depends on an unpinned, mutable external artefact (task.toml itself acknowledges this as a real weakness)."
+  },
+  "typos": {
+    "outcome": "pass",
+    "explanation": "Paths are consistent end to end: /app/assets/template.pdf and /app/assets/Picture{1,2}.png match COPY assets /app/assets, and /app/output.docx matches task.toml artifacts and OUTPUT in test_state.py. The Portuguese content strings ('ocorrencia', 'Usuário 123.3345') are byte-identical between instruction.md and the parametrised assertions, so the missing accent is deliberate content, not a defect. Only cosmetic inconsistencies remain inside comments (LibreOffice '25.8' vs '26.2'; SLACK's comment says renderers agree to 3px while the constant is 10), none of which affect execution."
+  },
+  "tests_or_solution_in_image": {
+    "outcome": "pass",
+    "explanation": "environment/Dockerfile copies only assets into /app; nothing from tests/ or solution/ is added to the agent's runtime image. The tests image's COPY . /tests/ is the verifier build and runs in environment_mode = \"separate\", and solution/expected.docx is not referenced by either Dockerfile."
+  },
+  "test_deps_in_image": {
+    "outcome": "pass",
+    "explanation": "Test-only dependencies are isolated to the verifier image: pytest, pytest-json-ctrf, numpy, scipy and the second LibreOffice AppImage appear only in tests/Dockerfile. The runtime image installs python-docx, lxml, pillow and pymupdf, which are working tools the agent needs to read the PDF and author the DOCX, not grading machinery — the graders' numpy/scipy stack is absent from it."
+  },
+  "hardcoded_solution": {
+    "outcome": "fail",
+    "explanation": "solution/solve.sh performs no derivation at all: it is `cp /solution/expected.docx /app/output.docx` over a hand-authored reference file, which task.toml states outright ('It was not generated, and solution/solve.sh only copies the finished file into place'). It demonstrates none of the steps an agent would perform — measuring the template, sizing the figures, placing the marks, arrows and letters — so it serves only as an oracle artefact, not as a worked process."
+  },
+  "file_reference_mentioned": {
+    "outcome": "pass",
+    "explanation": "instruction.md explicitly names the artefact the tests read: 'Your output should be a DOCX file and should be put in \"/app/output.docx\"', matching OUTPUT = Path(\"/app/output.docx\") in test_state.py and artifacts in task.toml. The input files the agent must consume (/app/assets/template.pdf, /app/assets/Picture1.png, /app/assets/Picture2.png) are named as well."
+  }
+}
