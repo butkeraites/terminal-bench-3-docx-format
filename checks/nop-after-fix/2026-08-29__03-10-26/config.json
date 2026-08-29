@@ -1,0 +1,14 @@
+{
+    "jobs_dir": "checks/nop-after-fix",
+    "quiet": true,
+    "agents": [
+        {
+            "name": "nop"
+        }
+    ],
+    "tasks": [
+        {
+            "path": "tasks/docx-format"
+        }
+    ]
+}

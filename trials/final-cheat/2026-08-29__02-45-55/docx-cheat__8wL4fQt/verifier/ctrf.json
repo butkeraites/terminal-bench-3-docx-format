@@ -1,0 +1,276 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-08-29T07:08:34.580766+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 23,
+            "passed": 13,
+            "failed": 10,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1787987234840,
+            "stop": 1787987314580
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1697,
+                "start": 1787987235313,
+                "stop": 1787987237010,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 2,
+                "start": 1787987237010,
+                "stop": 1787987237012,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787987237012,
+                "stop": 1787987237013,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787987237014,
+                "stop": 1787987237015,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787987237015,
+                "stop": 1787987237016,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787987237017,
+                "stop": 1787987237018,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_the_name_reaches_the_footer",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787987237018,
+                "stop": 1787987237019,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_placeholders_are_gone",
+                "status": "passed",
+                "duration": 2,
+                "start": 1787987237019,
+                "stop": 1787987237021,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_page_furniture_is_placed_as_in_the_template",
+                "status": "passed",
+                "duration": 22961,
+                "start": 1787987237021,
+                "stop": 1787987259982,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_left_bar_starts_below_the_banner",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787987259982,
+                "stop": 1787987259982,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_headings_are_dressed_like_the_template",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 16,
+                "start": 1787987259982,
+                "stop": 1787987259998,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "template = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.4166666666666667, 0.4166666666666667, 0.5833333333...ontrast=0.46535947918891907), HeadingStyle(height=34, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907)])\nproduced = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.9166666666666666, 0.0, 0.0), (0.4166666666666667, ...0), banner_end=177), headings=[HeadingStyle(height=33, left_inset=153, ink_is_dark=True, contrast=0.4771241834387183)])\n\n    def test_headings_are_dressed_like_the_template(template, produced):\n        assert produced.headings, \"no heading plates found in the output\"\n>       assert len(produced.headings) >= len(template.headings), (\n            f\"the template dresses {len(template.headings)} headings, \"\n            f\"the output has {len(produced.headings)}\"\n        )\nE       AssertionError: the template dresses 2 headings, the output has 1\nE       assert 1 >= 2\nE        +  where 1 = len([HeadingStyle(height=33, left_inset=153, ink_is_dark=True, contrast=0.4771241834387183)])\nE        +    where [HeadingStyle(height=33, left_inset=153, ink_is_dark=True, contrast=0.4771241834387183)] = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.9166666666666666, 0.0, 0.0), (0.4166666666666667, ...0), banner_end=177), headings=[HeadingStyle(height=33, left_inset=153, ink_is_dark=True, contrast=0.4771241834387183)]).headings\nE        +  and   2 = len([HeadingStyle(height=33, left_inset=153, ink_is_dark=True, contrast=0.46535947918891907), HeadingStyle(height=34, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907)])\nE        +    where [HeadingStyle(height=33, left_inset=153, ink_is_dark=True, contrast=0.46535947918891907), HeadingStyle(height=34, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907)] = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.4166666666666667, 0.4166666666666667, 0.5833333333...ontrast=0.46535947918891907), HeadingStyle(height=34, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907)]).headings\n\ntests/test_state.py:140: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_the_banner_survived",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787987259998,
+                "stop": 1787987259999,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "failed",
+                "duration": 112,
+                "start": 1787987259999,
+                "stop": 1787987260111,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>\n\n    @pytest.fixture(scope=\"session\")\n    def figures(page):\n        found = page.body_images()\n>       assert len(found) >= 2, f\"expected two images in the body, found {len(found)}\"\nE       AssertionError: expected two images in the body, found 1\nE       assert 1 >= 2\nE        +  where 1 = len([(432,723)-(807,821)])\n\ntests/test_state.py:173: AssertionError"
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787987260111,
+                "stop": 1787987260115,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>\n\n    @pytest.fixture(scope=\"session\")\n    def figures(page):\n        found = page.body_images()\n>       assert len(found) >= 2, f\"expected two images in the body, found {len(found)}\"\nE       AssertionError: expected two images in the body, found 1\nE       assert 1 >= 2\nE        +  where 1 = len([(432,723)-(807,821)])\n\ntests/test_state.py:173: AssertionError"
+            },
+            {
+                "name": "test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787987260115,
+                "stop": 1787987260119,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>\n\n    @pytest.fixture(scope=\"session\")\n    def figures(page):\n        found = page.body_images()\n>       assert len(found) >= 2, f\"expected two images in the body, found {len(found)}\"\nE       AssertionError: expected two images in the body, found 1\nE       assert 1 >= 2\nE        +  where 1 = len([(432,723)-(807,821)])\n\ntests/test_state.py:173: AssertionError"
+            },
+            {
+                "name": "test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787987260119,
+                "stop": 1787987260123,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>\n\n    @pytest.fixture(scope=\"session\")\n    def figures(page):\n        found = page.body_images()\n>       assert len(found) >= 2, f\"expected two images in the body, found {len(found)}\"\nE       AssertionError: expected two images in the body, found 1\nE       assert 1 >= 2\nE        +  where 1 = len([(432,723)-(807,821)])\n\ntests/test_state.py:173: AssertionError"
+            },
+            {
+                "name": "test_state.py::test_no_body_text_is_covered_by_an_image",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787987260123,
+                "stop": 1787987260127,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>\n\n    @pytest.fixture(scope=\"session\")\n    def figures(page):\n        found = page.body_images()\n>       assert len(found) >= 2, f\"expected two images in the body, found {len(found)}\"\nE       AssertionError: expected two images in the body, found 1\nE       assert 1 >= 2\nE        +  where 1 = len([(432,723)-(807,821)])\n\ntests/test_state.py:173: AssertionError"
+            },
+            {
+                "name": "test_state.py::test_the_frame_hugs_the_image_it_borders",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787987260127,
+                "stop": 1787987260131,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>\n\n    @pytest.fixture(scope=\"session\")\n    def figures(page):\n        found = page.body_images()\n>       assert len(found) >= 2, f\"expected two images in the body, found {len(found)}\"\nE       AssertionError: expected two images in the body, found 1\nE       assert 1 >= 2\nE        +  where 1 = len([(432,723)-(807,821)])\n\ntests/test_state.py:173: AssertionError"
+            },
+            {
+                "name": "test_state.py::test_each_letter_is_real_text_on_the_page",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 4,
+                "start": 1787987260132,
+                "stop": 1787987260136,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::letter_name::['A', 'B']"
+                ],
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>, letter_name = 'A'\n\n    @pytest.mark.parametrize(\"letter_name\", [\"A\", \"B\"])\n    def test_each_letter_is_real_text_on_the_page(page, letter_name):\n        \"\"\"The callout letter has to be text, not pixels.\n    \n        Only presence is asserted, deliberately. An earlier version of this test\n        also required the letter within 90px of the figure it labels, which the\n        template does not do: it parks both letters in the right margin \u2014 222px from\n        figure 1 \u2014 and establishes the relationship with a long leader instead. The\n        instruction tells the agent to imitate the template, so that assertion\n        failed documents for obeying it. What ties the mark to its letter is checked\n        by test_an_orange_arrow_runs_from_each_mark_towards_its_letter, which is the\n        relationship the template actually expresses.\n    \n        Presence stays because it is the one thing a flat raster of the page cannot\n        fake: letters drawn as pixels leave no text layer behind.\n        \"\"\"\n        letters = {t for _, t in page.text_boxes() if t in (\"A\", \"B\")}\n>       assert letter_name in letters, f\"letter {letter_name} is not on the page\"\nE       AssertionError: letter A is not on the page\nE       assert 'A' in set()\n\ntests/test_state.py:309: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_each_letter_is_real_text_on_the_page",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 4,
+                "start": 1787987260136,
+                "stop": 1787987260140,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::letter_name::['A', 'B']"
+                ],
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>, letter_name = 'B'\n\n    @pytest.mark.parametrize(\"letter_name\", [\"A\", \"B\"])\n    def test_each_letter_is_real_text_on_the_page(page, letter_name):\n        \"\"\"The callout letter has to be text, not pixels.\n    \n        Only presence is asserted, deliberately. An earlier version of this test\n        also required the letter within 90px of the figure it labels, which the\n        template does not do: it parks both letters in the right margin \u2014 222px from\n        figure 1 \u2014 and establishes the relationship with a long leader instead. The\n        instruction tells the agent to imitate the template, so that assertion\n        failed documents for obeying it. What ties the mark to its letter is checked\n        by test_an_orange_arrow_runs_from_each_mark_towards_its_letter, which is the\n        relationship the template actually expresses.\n    \n        Presence stays because it is the one thing a flat raster of the page cannot\n        fake: letters drawn as pixels leave no text layer behind.\n        \"\"\"\n        letters = {t for _, t in page.text_boxes() if t in (\"A\", \"B\")}\n>       assert letter_name in letters, f\"letter {letter_name} is not on the page\"\nE       AssertionError: letter B is not on the page\nE       assert 'B' in set()\n\ntests/test_state.py:309: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it",
+                "status": "failed",
+                "duration": 4,
+                "start": 1787987260140,
+                "stop": 1787987260144,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7f2dc16becf0>\n\n    @pytest.fixture(scope=\"session\")\n    def figures(page):\n        found = page.body_images()\n>       assert len(found) >= 2, f\"expected two images in the body, found {len(found)}\"\nE       AssertionError: expected two images in the body, found 1\nE       assert 1 >= 2\nE        +  where 1 = len([(432,723)-(807,821)])\n\ntests/test_state.py:173: AssertionError"
+            },
+            {
+                "name": "test_state.py::test_both_engines_dress_the_headings_alike",
+                "status": "passed",
+                "duration": 29452,
+                "start": 1787987260144,
+                "stop": 1787987289596,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_both_engines_place_the_furniture_alike",
+                "status": "passed",
+                "duration": 24983,
+                "start": 1787987289596,
+                "stop": 1787987314579,
+                "retries": 0,
+                "file_path": "test_state.py"
+            }
+        ]
+    }
+}

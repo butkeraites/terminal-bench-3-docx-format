@@ -25,11 +25,16 @@ author in the `[metadata]` block of
 
 | | Claude Code `opus-5` max | Codex `gpt-5.6-sol` xhigh |
 |---|---|---|
-| Standard trials (`/run`) | 3 runs, **reward 0** in all 3 | 2 runs, **reward 0** in both |
+| Standard trials (`/run`) | 3 runs, **reward 0** in all 3 | 3 runs, **reward 0** in all 3 |
+| Tests failed per run | 1, 1, 4 of 23 | 6, 7, 9 of 23 |
 | Adversarial trials (`/cheat`) | **reward 0** | **reward 0** |
 
-Oracle scores 1, nop scores 0. Two earlier drafts of the task were solved
-outright by Claude Code; the current tests are what closed them.
+Two of the three Claude Code runs failed by a **single test**, and by a different
+one each time. This task sits at the frontier rather than well beyond it, which
+`REPORT.md` §4 states with the numbers and argues about rather than hiding.
+
+Oracle scores 1 with all 23 passing, nop scores 0. Two earlier drafts were
+solved outright by Claude Code; the current tests are what closed them.
 
 The adversarial trial is worth reading in full (`REPORT.md` §6). Claude Code
 skipped building a document and shipped a **300 dpi picture** of the template
@@ -40,22 +45,17 @@ they had been drawn as pixels, so the rendered page contains no text "A" and no
 text "B". The test it fell to has two halves; this is the sound one, and the
 one an honest document satisfies without effort.
 
-## Two known defects
+## One defect fixed, one still open
 
-Both were found before submitting — one by the adversarial trial, one by
-`harbor check` — and both are stated plainly here rather than left for a
-reviewer to find. `REPORT.md` §5.1 and §8 carry the measurements.
+**Fixed before submitting.** `harbor check` found that a test required the
+callout letter within 90 px of its figure, while `tests/template.pdf` puts it
+222 px away and ties it to its mark with a long leader instead. The instruction
+tells the agent to imitate the template, so the assertion failed documents for
+obeying it. The distance assertion was removed — the leader is already asserted
+by its own test — and the whole battery was re-run afterwards. Everything in the
+results above is from the corrected suite. `REPORT.md` §5.1 has the measurements.
 
-**Two graded properties contradict the template.** A test requires the callout
-letter within 90 px of its figure; in `tests/template.pdf` the gap is 222 px, so
-an agent that faithfully imitates the template — which is what the instruction
-asks — fails. A second test limits how far an image may cover body text, and the
-template exceeds that limit too. The template was derived from the reference
-solution by swapping in differently-shaped photographs, and the layout re-flowed.
-Every trial still fails without these, and the adversarial trial is unaffected,
-but the failure analysis had to be rewritten once this was measured.
-
-**Nothing enforces editability.**
+**Still open: nothing enforces editability.**
 
 The instruction asks for an editable Word
 document, but no test checks it. A flat 300 dpi raster of the template, with real text floated over

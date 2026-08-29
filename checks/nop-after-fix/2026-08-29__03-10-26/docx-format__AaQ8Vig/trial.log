@@ -1,0 +1,24 @@
+Skipping image OS validation for hb__1d4d18b4cc6447c455e430ef25fe5848: docker inspect returned 1
+Collecting main service artifacts
+Failed to download artifact '/app/output.docx' from service 'main' (best-effort)
+Traceback (most recent call last):
+  File "/home/barbaruiva/.local/share/uv/tools/harbor/lib/python3.14/site-packages/harbor/trial/artifact_handler.py", line 351, in _download_artifact
+    await source_env.service_download_file(
+    ...<3 lines>...
+    )
+  File "/home/barbaruiva/.local/share/uv/tools/harbor/lib/python3.14/site-packages/harbor/environments/docker/docker.py", line 1057, in service_download_file
+    await self.download_file(source_path, target_path)
+  File "/home/barbaruiva/.local/share/uv/tools/harbor/lib/python3.14/site-packages/harbor/environments/docker/docker.py", line 1042, in download_file
+    await self._platform.download_file(source_path, target_path)
+  File "/home/barbaruiva/.local/share/uv/tools/harbor/lib/python3.14/site-packages/harbor/environments/docker/docker_unix.py", line 185, in download_file
+    await self._env._run_docker_compose_command(
+    ...<2 lines>...
+    )
+  File "/home/barbaruiva/.local/share/uv/tools/harbor/lib/python3.14/site-packages/harbor/environments/docker/docker.py", line 656, in _run_docker_compose_command
+    raise RuntimeError(
+    ...<5 lines>...
+    )
+RuntimeError: Docker compose command failed for environment docx-format. Command: docker compose --project-name docx-format__aaq8vig__env --project-directory /home/barbaruiva/Documents/klavis-tb3/tasks/docx-format/environment -f /tmp/tmpyumedn1x/docx-format__AaQ8Vig__env-docker-compose-resources.json -f /home/barbaruiva/.local/share/uv/tools/harbor/lib/python3.14/site-packages/harbor/environments/docker/docker-compose-build.yaml -f /tmp/tmp6qv_jb8x/docker-compose-environment.json -f /tmp/tmpgqgy08ss/docker-compose-mounts.json cp main:/app/output.docx checks/nop-after-fix/2026-08-29__03-10-26/docx-format__AaQ8Vig/artifacts/app/output.docx. Return code: 1. Stdout:  docx-format__aaq8vig__env-main-1 Copying docx-format__aaq8vig__env-main-1:/app/output.docx to checks/nop-after-fix/2026-08-29__03-10-26/docx-format__AaQ8Vig/artifacts/app/output.docx
+Error response from daemon: Could not find the file /app/output.docx in container d07bd27fe5a4c65e1125f05923df6d2dd2e72c969aff3ff171ad2e4cf2e8227f
+. Stderr: None. 
+Skipping image OS validation for hb__73438aafa8602dc9e3ee8dcf045e045b: docker inspect returned 1

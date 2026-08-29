@@ -268,7 +268,6 @@ def test_no_body_text_is_covered_by_an_image(page, figures):
 # --------------------------------------------------------------------------
 
 MAX_FRAME_PADDING = 70   # px at 150 dpi
-MAX_LETTER_GAP = 90      # px from the letter to the image it annotates
 
 
 def test_the_frame_hugs_the_image_it_borders(page, figures):
@@ -290,17 +289,24 @@ def test_the_frame_hugs_the_image_it_borders(page, figures):
     )
 
 
-@pytest.mark.parametrize("letter_name,index", [("A", 0), ("B", 1)])
-def test_each_letter_sits_beside_the_image_it_labels(page, figures, letter_name, index):
-    letters = {t: r for r, t in page.text_boxes() if t in ("A", "B")}
+@pytest.mark.parametrize("letter_name", ["A", "B"])
+def test_each_letter_is_real_text_on_the_page(page, letter_name):
+    """The callout letter has to be text, not pixels.
+
+    Only presence is asserted, deliberately. An earlier version of this test
+    also required the letter within 90px of the figure it labels, which the
+    template does not do: it parks both letters in the right margin — 222px from
+    figure 1 — and establishes the relationship with a long leader instead. The
+    instruction tells the agent to imitate the template, so that assertion
+    failed documents for obeying it. What ties the mark to its letter is checked
+    by test_an_orange_arrow_runs_from_each_mark_towards_its_letter, which is the
+    relationship the template actually expresses.
+
+    Presence stays because it is the one thing a flat raster of the page cannot
+    fake: letters drawn as pixels leave no text layer behind.
+    """
+    letters = {t for _, t in page.text_boxes() if t in ("A", "B")}
     assert letter_name in letters, f"letter {letter_name} is not on the page"
-    letter, figure = letters[letter_name], figures[index]
-    gap_x = max(0, letter.x0 - figure.x1, figure.x0 - letter.x1)
-    gap_y = max(0, letter.y0 - figure.y1, figure.y0 - letter.y1)
-    assert gap_x <= MAX_LETTER_GAP and gap_y <= MAX_LETTER_GAP, (
-        f"letter {letter_name} at {letter} is {gap_x}px horizontally and {gap_y}px "
-        f"vertically from the image it labels at {figure} — it reads as unrelated"
-    )
 
 
 def test_the_second_figure_precedes_the_caption_that_refers_to_it(page, figures):

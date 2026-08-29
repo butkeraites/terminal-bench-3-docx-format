@@ -1,0 +1,11 @@
+{
+    "task": {
+        "path": "tasks/docx-format"
+    },
+    "trial_name": "docx-format__AaQ8Vig",
+    "trials_dir": "checks/nop-after-fix/2026-08-29__03-10-26",
+    "agent": {
+        "name": "nop"
+    },
+    "job_id": "0c4b9637-6ba7-47cd-a004-c47c58af7c41"
+}

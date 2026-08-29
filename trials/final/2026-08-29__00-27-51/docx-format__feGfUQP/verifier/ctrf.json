@@ -1,0 +1,269 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-08-29T05:14:28.485355+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 23,
+            "passed": 22,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1787980399221,
+            "stop": 1787980468485
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 918,
+                "start": 1787980399702,
+                "stop": 1787980400620,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980400620,
+                "stop": 1787980400621,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980400621,
+                "stop": 1787980400622,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787980400622,
+                "stop": 1787980400622,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980400622,
+                "stop": 1787980400623,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980400623,
+                "stop": 1787980400624,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_the_name_reaches_the_footer",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980400624,
+                "stop": 1787980400625,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_placeholders_are_gone",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787980400625,
+                "stop": 1787980400625,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_page_furniture_is_placed_as_in_the_template",
+                "status": "passed",
+                "duration": 21113,
+                "start": 1787980400625,
+                "stop": 1787980421738,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_left_bar_starts_below_the_banner",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980421738,
+                "stop": 1787980421739,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_headings_are_dressed_like_the_template",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787980421739,
+                "stop": 1787980421739,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_banner_survived",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980421739,
+                "stop": 1787980421740,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "passed",
+                "duration": 22,
+                "start": 1787980421740,
+                "stop": 1787980421762,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::index,aspect::[(0, 1.4719101123595506), (1, 3.8461538461538463)]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980421762,
+                "stop": 1787980421763,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::index,aspect::[(0, 1.4719101123595506), (1, 3.8461538461538463)]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image",
+                "status": "passed",
+                "duration": 660,
+                "start": 1787980421763,
+                "stop": 1787980422423,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter",
+                "status": "passed",
+                "duration": 1166,
+                "start": 1787980422423,
+                "stop": 1787980423589,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_no_body_text_is_covered_by_an_image",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980423589,
+                "stop": 1787980423590,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_frame_hugs_the_image_it_borders",
+                "status": "passed",
+                "duration": 206,
+                "start": 1787980423590,
+                "stop": 1787980423796,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_each_letter_is_real_text_on_the_page",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787980423797,
+                "stop": 1787980423797,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::letter_name::['A', 'B']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_each_letter_is_real_text_on_the_page",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787980423797,
+                "stop": 1787980423798,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::letter_name::['A', 'B']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 16,
+                "start": 1787980423798,
+                "stop": 1787980423814,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7f15cf006cf0>\nfigures = [(335,385)-(904,780), (604,991)-(916,1072)]\n\n    def test_the_second_figure_precedes_the_caption_that_refers_to_it(page, figures):\n        \"\"\"A figure introduced by its caption has to appear first, or the reader\n        meets the reference before the thing referred to.\n    \n        Measured on the references: -75 px laid out well, +96 px laid out badly.\n        \"\"\"\n        caption = next((r for r, t in page.text_boxes() if \"Detalhe B\" in t), None)\n        assert caption is not None, \"the caption referring to Detalhe B is missing\"\n        figure = figures[1]\n>       assert figure.y0 < caption.y0, (\n            f\"the second figure starts at y={figure.y0} but its caption starts at \"\n            f\"y={caption.y0} \u2014 the image is placed after the text that refers to it\"\n        )\nE       AssertionError: the second figure starts at y=991 but its caption starts at y=937 \u2014 the image is placed after the text that refers to it\nE       assert 991 < 937\nE        +  where 991 = (604,991)-(916,1072).y0\nE        +  and   937 = (193,937)-(919,960).y0\n\ntests/test_state.py:321: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_both_engines_dress_the_headings_alike",
+                "status": "passed",
+                "duration": 23954,
+                "start": 1787980423814,
+                "stop": 1787980447768,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_both_engines_place_the_furniture_alike",
+                "status": "passed",
+                "duration": 20715,
+                "start": 1787980447769,
+                "stop": 1787980468484,
+                "retries": 0,
+                "file_path": "test_state.py"
+            }
+        ]
+    }
+}

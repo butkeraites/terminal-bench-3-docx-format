@@ -1,0 +1,65 @@
+{
+    "id": "e5e7bf85-7cdb-47f9-8515-a11a056dd5bf",
+    "started_at": "2026-08-29T00:27:51.185706",
+    "updated_at": "2026-08-29T02:45:54.472556",
+    "finished_at": "2026-08-29T02:45:54.472556",
+    "n_total_trials": 6,
+    "stats": {
+        "n_completed_trials": 6,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "codex__gpt-5.6-sol__adhoc": {
+                "n_trials": 3,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {
+                    "2": 0.0
+                },
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "docx-format__24LMbfv",
+                            "docx-format__vKcS2W6",
+                            "docx-format__zib6agQ"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            },
+            "claude-code__claude-opus-5__adhoc": {
+                "n_trials": 3,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {
+                    "2": 0.0
+                },
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "docx-format__feGfUQP",
+                            "docx-format__y7MPRaV",
+                            "docx-format__5Chr4Ws"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": 24276303,
+        "n_cache_tokens": 23478571,
+        "n_output_tokens": 501805,
+        "cost_usd": 30.127922899999994
+    }
+}

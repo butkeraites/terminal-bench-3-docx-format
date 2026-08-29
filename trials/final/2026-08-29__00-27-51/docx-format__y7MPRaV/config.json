@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "tasks/docx-format"
+    },
+    "trial_name": "docx-format__y7MPRaV",
+    "trials_dir": "trials/final/2026-08-29__00-27-51",
+    "agent": {
+        "name": "claude-code",
+        "model_name": "anthropic/claude-opus-5",
+        "kwargs": {
+            "reasoning_effort": "max"
+        }
+    },
+    "job_id": "e5e7bf85-7cdb-47f9-8515-a11a056dd5bf"
+}

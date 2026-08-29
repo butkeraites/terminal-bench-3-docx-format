@@ -1,0 +1,284 @@
+{
+    "reportFormat": "CTRF",
+    "specVersion": "0.0.0",
+    "timestamp": "2026-08-29T04:41:33.068206+00:00",
+    "generatedBy": "pytest",
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "9.1.1"
+        },
+        "summary": {
+            "tests": 23,
+            "passed": 17,
+            "failed": 6,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1787978413920,
+            "stop": 1787978493067
+        },
+        "environment": {
+            "buildName": "Pytest JSON CTRF Report",
+            "buildNumber": "000",
+            "buildUrl": "https://ctrf.io"
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 974,
+                "start": 1787978414416,
+                "stop": 1787978415390,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787978415390,
+                "stop": 1787978415391,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787978415391,
+                "stop": 1787978415391,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787978415392,
+                "stop": 1787978415392,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787978415392,
+                "stop": 1787978415393,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_required_text_is_present",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787978415393,
+                "stop": 1787978415394,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::phrase::['Evid\u00eancias de ocorrencia', 'Usu\u00e1rio 123.3345', 'Print da falha', 'Evid\u00eancia do tempo', 'Reconhecimento de Fala (Detalhe A)', 'hora 6pm (mostrada no Detalhe B)']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_the_name_reaches_the_footer",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787978415394,
+                "stop": 1787978415394,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_placeholders_are_gone",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787978415395,
+                "stop": 1787978415395,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_page_furniture_is_placed_as_in_the_template",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 23162,
+                "start": 1787978415395,
+                "stop": 1787978438557,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "template = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.4166666666666667, 0.4166666666666667, 0.5833333333...ontrast=0.46535947918891907), HeadingStyle(height=34, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907)])\nproduced = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.9166666666666666, 0.0, 0.0), (0.9166666666666666, ...ontrast=0.46797385811805725), HeadingStyle(height=34, left_inset=150, ink_is_dark=True, contrast=0.46535947918891907)])\n\n    def test_the_page_furniture_is_placed_as_in_the_template(template, produced):\n        want, got = template.furniture, produced.furniture\n        assert got.left_bar is not None, \"the bar down the left margin is missing\"\n        assert got.footer_bar is not None, \"the footer bar is missing\"\n    \n        faults = []\n        if abs(got.left_bar.x1 - want.left_bar.x1) > 12:\n            faults.append(f\"left bar is {got.left_bar.width}px wide, template has {want.left_bar.width}px\")\n        if abs(got.left_bar.y0 - want.left_bar.y0) > 12:\n            faults.append(\n                f\"left bar starts at y={got.left_bar.y0}, template starts at y={want.left_bar.y0}\"\n            )\n        if abs(got.footer_bar.y0 - want.footer_bar.y0) > 12:\n            faults.append(\n                f\"footer bar starts at y={got.footer_bar.y0}, template has y={want.footer_bar.y0}\"\n            )\n>       assert not faults, \"; \".join(faults)\nE       AssertionError: left bar starts at y=156, template starts at y=178\nE       assert not ['left bar starts at y=156, template starts at y=178']\n\ntests/test_state.py:119: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_the_left_bar_starts_below_the_banner",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787978438557,
+                "stop": 1787978438557,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_headings_are_dressed_like_the_template",
+                "status": "passed",
+                "duration": 0,
+                "start": 1787978438558,
+                "stop": 1787978438558,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_banner_survived",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787978438558,
+                "stop": 1787978438559,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "passed",
+                "duration": 16,
+                "start": 1787978438559,
+                "stop": 1787978438575,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::index,aspect::[(0, 1.4719101123595506), (1, 3.8461538461538463)]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_each_image_keeps_its_aspect_ratio",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 4,
+                "start": 1787978438576,
+                "stop": 1787978438580,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::index,aspect::[(0, 1.4719101123595506), (1, 3.8461538461538463)]"
+                ],
+                "trace": "figures = [(168,384)-(1216,1081), (706,1208)-(1216,1459)], index = 1\naspect = 3.8461538461538463\n\n    @pytest.mark.parametrize(\"index,aspect\", [(0, 262 / 178), (1, 150 / 39)])\n    def test_each_image_keeps_its_aspect_ratio(figures, index, aspect):\n        region = figures[index]\n        drawn = region.width / region.height\n>       assert abs(drawn - aspect) / aspect < 0.06, (\n            f\"image {index + 1} drawn at aspect {drawn:.3f}, the source is {aspect:.3f} \u2014 distorted\"\n        )\nE       AssertionError: image 2 drawn at aspect 2.032, the source is 3.846 \u2014 distorted\nE       assert (1.814281336193687 / 3.8461538461538463) < 0.06\nE        +  where 1.814281336193687 = abs((2.0318725099601593 - 3.8461538461538463))\n\ntests/test_state.py:181: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image",
+                "status": "passed",
+                "duration": 660,
+                "start": 1787978438580,
+                "stop": 1787978439240,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 818,
+                "start": 1787978439240,
+                "stop": 1787978440058,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7fbcfd1d6cf0>\nfigures = [(168,384)-(1216,1081), (706,1208)-(1216,1459)]\n\n    def test_an_orange_arrow_runs_from_each_mark_towards_its_letter(page, figures):\n        oranges = page.regions(ORANGE)\n        reds = page.regions(RED)\n        letters = {t: r for r, t in page.text_boxes() if t in (\"A\", \"B\")}\n>       assert set(letters) == {\"A\", \"B\"}, f\"letters A and B are not both present: {sorted(letters)}\"\nE       AssertionError: letters A and B are not both present: []\nE       assert set() == {'A', 'B'}\nE         \nE         Extra items in the right set:\nE         'A'\nE         'B'\nE         Use -v to get more diff\n\ntests/test_state.py:201: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_no_body_text_is_covered_by_an_image",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787978440058,
+                "stop": 1787978440059,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_the_frame_hugs_the_image_it_borders",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 234,
+                "start": 1787978440059,
+                "stop": 1787978440293,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "page = <visual.Page object at 0x7fbcfd1d6cf0>\nfigures = [(168,384)-(1216,1081), (706,1208)-(1216,1459)]\n\n    def test_the_frame_hugs_the_image_it_borders(page, figures):\n        \"\"\"The green rule is the image's border, not a box it floats inside.\"\"\"\n        frames = [g for g in page.regions(GREEN) if g.contains(figures[0], 60)]\n>       assert frames, \"the green border around the first image is gone\"\nE       AssertionError: the green border around the first image is gone\nE       assert []\n\ntests/test_state.py:276: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_each_letter_is_real_text_on_the_page",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 5,
+                "start": 1787978440293,
+                "stop": 1787978440298,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::letter_name::['A', 'B']"
+                ],
+                "trace": "page = <visual.Page object at 0x7fbcfd1d6cf0>, letter_name = 'A'\n\n    @pytest.mark.parametrize(\"letter_name\", [\"A\", \"B\"])\n    def test_each_letter_is_real_text_on_the_page(page, letter_name):\n        \"\"\"The callout letter has to be text, not pixels.\n    \n        Only presence is asserted, deliberately. An earlier version of this test\n        also required the letter within 90px of the figure it labels, which the\n        template does not do: it parks both letters in the right margin \u2014 222px from\n        figure 1 \u2014 and establishes the relationship with a long leader instead. The\n        instruction tells the agent to imitate the template, so that assertion\n        failed documents for obeying it. What ties the mark to its letter is checked\n        by test_an_orange_arrow_runs_from_each_mark_towards_its_letter, which is the\n        relationship the template actually expresses.\n    \n        Presence stays because it is the one thing a flat raster of the page cannot\n        fake: letters drawn as pixels leave no text layer behind.\n        \"\"\"\n        letters = {t for _, t in page.text_boxes() if t in (\"A\", \"B\")}\n>       assert letter_name in letters, f\"letter {letter_name} is not on the page\"\nE       AssertionError: letter A is not on the page\nE       assert 'A' in set()\n\ntests/test_state.py:309: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_each_letter_is_real_text_on_the_page",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 5,
+                "start": 1787978440298,
+                "stop": 1787978440303,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::letter_name::['A', 'B']"
+                ],
+                "trace": "page = <visual.Page object at 0x7fbcfd1d6cf0>, letter_name = 'B'\n\n    @pytest.mark.parametrize(\"letter_name\", [\"A\", \"B\"])\n    def test_each_letter_is_real_text_on_the_page(page, letter_name):\n        \"\"\"The callout letter has to be text, not pixels.\n    \n        Only presence is asserted, deliberately. An earlier version of this test\n        also required the letter within 90px of the figure it labels, which the\n        template does not do: it parks both letters in the right margin \u2014 222px from\n        figure 1 \u2014 and establishes the relationship with a long leader instead. The\n        instruction tells the agent to imitate the template, so that assertion\n        failed documents for obeying it. What ties the mark to its letter is checked\n        by test_an_orange_arrow_runs_from_each_mark_towards_its_letter, which is the\n        relationship the template actually expresses.\n    \n        Presence stays because it is the one thing a flat raster of the page cannot\n        fake: letters drawn as pixels leave no text layer behind.\n        \"\"\"\n        letters = {t for _, t in page.text_boxes() if t in (\"A\", \"B\")}\n>       assert letter_name in letters, f\"letter {letter_name} is not on the page\"\nE       AssertionError: letter B is not on the page\nE       assert 'B' in set()\n\ntests/test_state.py:309: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it",
+                "status": "passed",
+                "duration": 1,
+                "start": 1787978440303,
+                "stop": 1787978440304,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_both_engines_dress_the_headings_alike",
+                "status": "passed",
+                "duration": 27886,
+                "start": 1787978440304,
+                "stop": 1787978468190,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_both_engines_place_the_furniture_alike",
+                "status": "passed",
+                "duration": 24876,
+                "start": 1787978468190,
+                "stop": 1787978493066,
+                "retries": 0,
+                "file_path": "test_state.py"
+            }
+        ]
+    }
+}

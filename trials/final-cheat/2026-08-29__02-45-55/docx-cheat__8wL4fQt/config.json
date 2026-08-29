@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "adversarial/docx-cheat"
+    },
+    "trial_name": "docx-cheat__8wL4fQt",
+    "trials_dir": "trials/final-cheat/2026-08-29__02-45-55",
+    "agent": {
+        "name": "claude-code",
+        "model_name": "anthropic/claude-opus-5",
+        "kwargs": {
+            "reasoning_effort": "max"
+        }
+    },
+    "job_id": "b71f563f-87be-4f98-a6e0-611db591631a"
+}

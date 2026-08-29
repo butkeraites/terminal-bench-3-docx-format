@@ -1,0 +1,59 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.5.2
+collected 23 items
+
+tests/test_state.py ....................F..                              [100%]
+
+=================================== FAILURES ===================================
+________ test_the_second_figure_precedes_the_caption_that_refers_to_it _________
+
+page = <visual.Page object at 0x7f15cf006cf0>
+figures = [(335,385)-(904,780), (604,991)-(916,1072)]
+
+    def test_the_second_figure_precedes_the_caption_that_refers_to_it(page, figures):
+        """A figure introduced by its caption has to appear first, or the reader
+        meets the reference before the thing referred to.
+    
+        Measured on the references: -75 px laid out well, +96 px laid out badly.
+        """
+        caption = next((r for r, t in page.text_boxes() if "Detalhe B" in t), None)
+        assert caption is not None, "the caption referring to Detalhe B is missing"
+        figure = figures[1]
+>       assert figure.y0 < caption.y0, (
+            f"the second figure starts at y={figure.y0} but its caption starts at "
+            f"y={caption.y0} — the image is placed after the text that refers to it"
+        )
+E       AssertionError: the second figure starts at y=991 but its caption starts at y=937 — the image is placed after the text that refers to it
+E       assert 991 < 937
+E        +  where 991 = (604,991)-(916,1072).y0
+E        +  and   937 = (193,937)-(919,960).y0
+
+tests/test_state.py:321: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_state.py::test_required_text_is_present[Evid\xeancias de ocorrencia]
+PASSED tests/test_state.py::test_required_text_is_present[Usu\xe1rio 123.3345]
+PASSED tests/test_state.py::test_required_text_is_present[Print da falha]
+PASSED tests/test_state.py::test_required_text_is_present[Evid\xeancia do tempo]
+PASSED tests/test_state.py::test_required_text_is_present[Reconhecimento de Fala (Detalhe A)]
+PASSED tests/test_state.py::test_required_text_is_present[hora 6pm (mostrada no Detalhe B)]
+PASSED tests/test_state.py::test_the_name_reaches_the_footer
+PASSED tests/test_state.py::test_the_placeholders_are_gone
+PASSED tests/test_state.py::test_the_page_furniture_is_placed_as_in_the_template
+PASSED tests/test_state.py::test_the_left_bar_starts_below_the_banner
+PASSED tests/test_state.py::test_headings_are_dressed_like_the_template
+PASSED tests/test_state.py::test_the_banner_survived
+PASSED tests/test_state.py::test_each_image_keeps_its_aspect_ratio[0-1.4719101123595506]
+PASSED tests/test_state.py::test_each_image_keeps_its_aspect_ratio[1-3.8461538461538463]
+PASSED tests/test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image
+PASSED tests/test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter
+PASSED tests/test_state.py::test_no_body_text_is_covered_by_an_image
+PASSED tests/test_state.py::test_the_frame_hugs_the_image_it_borders
+PASSED tests/test_state.py::test_each_letter_is_real_text_on_the_page[A]
+PASSED tests/test_state.py::test_each_letter_is_real_text_on_the_page[B]
+PASSED tests/test_state.py::test_both_engines_dress_the_headings_alike
+PASSED tests/test_state.py::test_both_engines_place_the_furniture_alike
+FAILED tests/test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it
+=================== 1 failed, 22 passed in 69.26s (0:01:09) ====================

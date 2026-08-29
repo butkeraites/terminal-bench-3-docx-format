@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "tasks/docx-format"
+    },
+    "trial_name": "docx-format__vKcS2W6",
+    "trials_dir": "trials/final/2026-08-29__00-27-51",
+    "agent": {
+        "name": "codex",
+        "model_name": "openai/gpt-5.6-sol",
+        "kwargs": {
+            "reasoning_effort": "xhigh"
+        }
+    },
+    "job_id": "e5e7bf85-7cdb-47f9-8515-a11a056dd5bf"
+}
