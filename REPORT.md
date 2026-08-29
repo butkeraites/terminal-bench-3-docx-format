@@ -5,7 +5,7 @@ cannot game it, and a plain account of where it is thin.
 
 The task is [`tasks/docx-format/`](tasks/docx-format/). Everything below is
 reproducible from [`configs/`](configs/) and the raw records in
-[`trials/`](trials/), [`jobs/`](jobs/) and [`checks/`](checks/).
+[`trials/`](trials/) and [`checks/`](checks/).
 
 ---
 
@@ -46,11 +46,11 @@ The adversarial variant used in §6 is `adversarial/docx-cheat/`, digest
 `sha256:bfe27a51220a…`. It differs from the task only in `instruction.md` and
 the `name` in `task.toml`; environment, tests and solution are identical files.
 
-An earlier version of this task was tested and reported before a defect was
-found and fixed (§5.1). Those records are kept in `trials/cc-*`, `trials/cx-*`
-and `trials/cheat/`, and they are **not** the evidence for this submission —
-they measured a different test suite. Everything cited below comes from
-`trials/final/` and `trials/final-cheat/`.
+An earlier version of this task was tested before a defect was found and fixed
+(§5.1). Those runs measured a different test suite and are not evidence for this
+submission, so their records were dropped rather than left to be mistaken for
+results; they remain in this repository's git history. Everything cited below
+comes from `trials/final/` and `trials/final-cheat/`.
 
 ## 3. Required checks
 
@@ -205,9 +205,10 @@ is the leader, and that is asserted by
 assertion was removed; the test now checks only that each letter is real text on
 the page, which is the half a raster cannot fake (§6).
 
-The fix was verified before the battery was re-run: oracle 23/23, and a single
-Codex trial still failing on seven independent grounds including the leader
-test. Every trial in §4 is from after the fix.
+The fix was verified before the battery was re-run: the oracle passed 23/23, and
+a Codex trial still failed on seven independent grounds including the leader
+test. Every trial in §4 is from after the fix, and the three Codex runs there
+reproduce that result.
 
 `test_no_body_text_is_covered_by_an_image` has a milder version of the same
 fault — the template's own caption is overlapped 18×26 px by the clock image
@@ -330,15 +331,12 @@ Stated plainly rather than papered over.
 7. **`behavior_in_task_description` still fails the rubric after the fix**, on
    four grounds of which one is sound — the body-text overlap in item 5 above.
    §3 answers the other three by measurement.
-8. **Forged result files are committed on purpose.** The earlier adversarial
-   trial planted `result.json`, `score.json` and four others claiming
-   `"reward": 1.0` under
-   `trials/cheat/…/docx-cheat__pAYkTEn/artifacts/logs/artifacts/`. They are
-   evidence of an attack, labelled by a `README.FABRICATED.md` beside them. Any
-   script walking this repository for rewards must read `verifier/reward.txt`.
-9. **A second task is in the repository.** `archive/certificate-verifier-slo/` is
-   complete through its own oracle/nop gate but is not the submission and has not
-   been reviewed to submission standard.
+8. **Two records score `reward 1` and are not passes.** `trials/probe-docx/` and
+   `trials/probe-docx-pdf/` are the earlier drafts Claude Code solved, kept as
+   evidence that the task was hardened against a real model (§5). The two
+   `harbor check` runs also score 1, which there means the rubric evaluator
+   completed, not that the task passed it. Read `verifier/reward.txt` in
+   `trials/final*/` for the results that matter.
 
 ---
 

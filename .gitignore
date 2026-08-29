@@ -25,6 +25,9 @@ results/
 trials/**/agent/sessions/
 trials/**/agent/trajectory.json
 trials/**/agent/claude-code.txt
+checks/**/agent/sessions/
+checks/**/agent/trajectory.json
+checks/**/agent/claude-code.txt
 
 # Rendered docs are committed; keep the intermediate out
 docs/*.tmp

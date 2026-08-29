@@ -1,4 +1,0 @@
-# Build context for the JUDGE image. _core/ and judge.py must both survive.
-__pycache__/
-*.py[cod]
-.pytest_cache/

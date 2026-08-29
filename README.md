@@ -84,18 +84,17 @@ one every result in `REPORT.md` was measured against.
 
 ```
 tasks/docx-format/     the submitted task
-adversarial/          red-team variant + scripted cheat, for the /cheat trials
-  docx-cheat/          same task, red-team instruction, for the /cheat trials
+adversarial/           red-team variant + scripted cheat, for the /cheat trials
 configs/               job configs for oracle, nop, /run and /cheat
-trials/final*/         the trials this submission rests on
-trials/  jobs/         earlier records, kept but superseded — see REPORT.md §2
-checks/                oracle, nop and the two rubric checks
-authoring/             working files from building the reference document
-scripts/               utilities, incl. the trial-log recovery in REPORT.md's appendix
-docs/  verifier-core/  belong to the archived second task, not to this one
+trials/final*/         the six standard trials and the two adversarial ones
+trials/probe-docx*/    the two earlier drafts Claude Code solved — see REPORT.md §5
+checks/                oracle, nop, and the rubric check before and after the fix
+authoring/             the Word source the template PDF was rendered from
+scripts/               the trial-log recovery described in REPORT.md's appendix
 archive/certificate-verifier-slo/   a second, complete task — NOT the submission
 ```
 
-`archive/certificate-verifier-slo/` is a different task that was built first and
-taken as far as its own oracle/nop gate. It is kept because the work is real,
-but the submission is `tasks/docx-format/`.
+Everything in this repository is either the task, the evidence cited in
+`REPORT.md`, or what is needed to reproduce that evidence. Work that is not part
+of this submission — an earlier unrelated task, superseded trial records — was
+removed rather than left to be sifted; it remains in the git history.
