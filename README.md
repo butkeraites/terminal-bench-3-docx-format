@@ -30,8 +30,13 @@ author in the `[metadata]` block of
 | Adversarial trials (`/cheat`) | **reward 0** | **reward 0** |
 
 Two of the three Claude Code runs failed by a **single test**, and by a different
-one each time. This task sits at the frontier rather than well beyond it, which
-`REPORT.md` §4 states with the numbers and argues about rather than hiding.
+one each time — worth knowing, and `REPORT.md` §4 states it with the numbers.
+
+It is also worth reading correctly. 22 of 23 is close to finishing *one page*.
+The filings this task is drawn from run to hundreds of pages and are accepted
+only if every page is right, so the quantity that matters is the fraction of
+pages that come out perfect — and that is **0 of 3**. The single-page reduction
+understates the real gap rather than flattering the models.
 
 Oracle scores 1 with all 23 passing, nop scores 0. Two earlier drafts were
 solved outright by Claude Code; the current tests are what closed them.

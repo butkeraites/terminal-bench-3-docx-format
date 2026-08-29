@@ -116,11 +116,29 @@ guide asks for tasks agents "cannot solve (reliably or at all)", and 0 of 3 with
 22/23 twice is the *unreliably* case rather than the *not at all* case. A fourth
 run could plausibly pass.
 
-That is a real limitation, stated here rather than left to be discovered. The
-counter-argument, which is why the task is submitted anyway: a task the best
-model misses by ten tests measures less than one it misses by one, and the tests
-it misses are not arbitrary — they are the cross-engine and relational
-properties §5.2 describes.
+That is a real limitation and it is stated here rather than left to be
+discovered. Two things argue for submitting anyway.
+
+First, a task the best model misses by ten tests measures less than one it
+misses by one, and the tests it misses are not arbitrary — they are the
+cross-engine and relational properties §5.2 describes.
+
+Second, and more important: **one page is the floor of this problem, not the
+ceiling.** The work this task is drawn from produces filings of hundreds to
+thousands of pages, and the acceptance condition is uniform — a firm does not
+accept a document it has to re-check, so 99% correct is a rejection — the
+task's `difficulty_explanation` records the attempt that ran into exactly that
+wall. The quantity that matters is
+therefore not how many assertions pass on one page but the fraction of pages
+that are perfect, and that fraction here is **0 of 3**. If a model's chance of
+getting a whole page right is q, a 600-page filing needs roughly q^600; at
+q = 0.9 that is on the order of 1e-27. Even granting heavy correlation between
+pages, the requirement is uniform perfection and the measured rate of a perfect
+page is zero.
+
+So 22 of 23 is close to finishing *a page*. It is not close to producing the
+deliverable, and the single-page reduction understates the real gap rather than
+exaggerating it.
 
 Codex is not close. It fails 6–9 tests, and fails the same things every run.
 
