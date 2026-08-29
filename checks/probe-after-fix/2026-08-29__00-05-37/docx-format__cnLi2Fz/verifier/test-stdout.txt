@@ -1,0 +1,192 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.5.2
+collected 23 items
+
+tests/test_state.py ........FF..FF.F.F....F                              [100%]
+
+=================================== FAILURES ===================================
+_____________ test_the_page_furniture_is_placed_as_in_the_template _____________
+
+template = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.4166666666666667, 0.4166666666666667, 0.5833333333...ontrast=0.46535947918891907), HeadingStyle(height=34, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907)])
+produced = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.4166666666666667, 0.5833333333333334, 0.5833333333...ontrast=0.46535947918891907), HeadingStyle(height=26, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907)])
+
+    def test_the_page_furniture_is_placed_as_in_the_template(template, produced):
+        want, got = template.furniture, produced.furniture
+        assert got.left_bar is not None, "the bar down the left margin is missing"
+        assert got.footer_bar is not None, "the footer bar is missing"
+    
+        faults = []
+        if abs(got.left_bar.x1 - want.left_bar.x1) > 12:
+            faults.append(f"left bar is {got.left_bar.width}px wide, template has {want.left_bar.width}px")
+        if abs(got.left_bar.y0 - want.left_bar.y0) > 12:
+            faults.append(
+                f"left bar starts at y={got.left_bar.y0}, template starts at y={want.left_bar.y0}"
+            )
+        if abs(got.footer_bar.y0 - want.footer_bar.y0) > 12:
+            faults.append(
+                f"footer bar starts at y={got.footer_bar.y0}, template has y={want.footer_bar.y0}"
+            )
+>       assert not faults, "; ".join(faults)
+E       AssertionError: left bar starts at y=155, template starts at y=178
+E       assert not ['left bar starts at y=155, template starts at y=178']
+
+tests/test_state.py:119: AssertionError
+__________________ test_the_left_bar_starts_below_the_banner ___________________
+
+produced = Profile(accents=[(0.4166666666666667, 0.6666666666666666, 0.25), (0.4166666666666667, 0.5833333333333334, 0.5833333333...ontrast=0.46535947918891907), HeadingStyle(height=26, left_inset=152, ink_is_dark=True, contrast=0.46535947918891907)])
+
+    def test_the_left_bar_starts_below_the_banner(produced):
+        """It runs from the foot of the banner to the footer, and overlaps neither."""
+        bar, end = produced.furniture.left_bar, produced.furniture.banner_end
+        assert bar is not None, "the bar down the left margin is missing"
+>       assert bar.y0 >= end - 12, (
+            f"the left bar starts at y={bar.y0} and runs {end - bar.y0}px up into the "
+            f"banner, which ends at y={end}"
+        )
+E       AssertionError: the left bar starts at y=155 and runs 23px up into the banner, which ends at y=178
+E       assert 155 >= (178 - 12)
+E        +  where 155 = (2,155)-(51,1655).y0
+
+tests/test_state.py:126: AssertionError
+_________ test_each_image_keeps_its_aspect_ratio[0-1.4719101123595506] _________
+
+figures = [(408,385)-(1039,476), (352,394)-(901,768)], index = 0
+aspect = 1.4719101123595506
+
+    @pytest.mark.parametrize("index,aspect", [(0, 262 / 178), (1, 150 / 39)])
+    def test_each_image_keeps_its_aspect_ratio(figures, index, aspect):
+        region = figures[index]
+        drawn = region.width / region.height
+>       assert abs(drawn - aspect) / aspect < 0.06, (
+            f"image {index + 1} drawn at aspect {drawn:.3f}, the source is {aspect:.3f} — distorted"
+        )
+E       AssertionError: image 1 drawn at aspect 6.934, the source is 1.472 — distorted
+E       assert (5.462155821706384 / 1.4719101123595506) < 0.06
+E        +  where 5.462155821706384 = abs((6.934065934065934 - 1.4719101123595506))
+
+tests/test_state.py:181: AssertionError
+_________ test_each_image_keeps_its_aspect_ratio[1-3.8461538461538463] _________
+
+figures = [(408,385)-(1039,476), (352,394)-(901,768)], index = 1
+aspect = 3.8461538461538463
+
+    @pytest.mark.parametrize("index,aspect", [(0, 262 / 178), (1, 150 / 39)])
+    def test_each_image_keeps_its_aspect_ratio(figures, index, aspect):
+        region = figures[index]
+        drawn = region.width / region.height
+>       assert abs(drawn - aspect) / aspect < 0.06, (
+            f"image {index + 1} drawn at aspect {drawn:.3f}, the source is {aspect:.3f} — distorted"
+        )
+E       AssertionError: image 2 drawn at aspect 1.468, the source is 3.846 — distorted
+E       assert (2.378239407651172 / 3.8461538461538463) < 0.06
+E        +  where 2.378239407651172 = abs((1.467914438502674 - 3.8461538461538463))
+
+tests/test_state.py:181: AssertionError
+_________ test_an_orange_arrow_runs_from_each_mark_towards_its_letter __________
+
+page = <visual.Page object at 0x7f7a02d46cf0>
+figures = [(408,385)-(1039,476), (352,394)-(901,768)]
+
+    def test_an_orange_arrow_runs_from_each_mark_towards_its_letter(page, figures):
+        oranges = page.regions(ORANGE)
+        reds = page.regions(RED)
+        letters = {t: r for r, t in page.text_boxes() if t in ("A", "B")}
+        assert set(letters) == {"A", "B"}, f"letters A and B are not both present: {sorted(letters)}"
+    
+        for letter, figure in zip(("A", "B"), figures):
+            target = letters[letter]
+            mark = next((r for r in reds if figure.contains(r, SLACK)), None)
+            assert mark is not None, f"no red mark on the image belonging to letter {letter}"
+    
+            # The arrow lives in the corridor between the mark and the letter.
+            lo_x, hi_x = sorted((mark.centre()[0], target.centre()[0]))
+            lo_y, hi_y = sorted((mark.centre()[1], target.centre()[1]))
+            margin = 60
+            linked = [
+                o for o in oranges
+                if lo_x - margin <= o.centre()[0] <= hi_x + margin
+                and lo_y - margin <= o.centre()[1] <= hi_y + margin
+            ]
+>           assert linked, (
+                f"no orange arrow between the red mark {mark} and letter {letter} at {target}; "
+                f"orange regions are at {oranges}"
+            )
+E           AssertionError: no orange arrow between the red mark (419,398)-(626,425) and letter A at (1124,391)-(1174,466); orange regions are at [(616,2)-(632,149)]
+E           assert []
+
+tests/test_state.py:217: AssertionError
+___________________ test_the_frame_hugs_the_image_it_borders ___________________
+
+page = <visual.Page object at 0x7f7a02d46cf0>
+figures = [(408,385)-(1039,476), (352,394)-(901,768)]
+
+    def test_the_frame_hugs_the_image_it_borders(page, figures):
+        """The green rule is the image's border, not a box it floats inside."""
+        frames = [g for g in page.regions(GREEN) if g.contains(figures[0], 60)]
+>       assert frames, "the green border around the first image is gone"
+E       AssertionError: the green border around the first image is gone
+E       assert []
+
+tests/test_state.py:276: AssertionError
+_________________ test_both_engines_place_the_furniture_alike __________________
+
+page = <visual.Page object at 0x7f7a02d46cf0>
+second_rendering = <visual.Page object at 0x7f79bd71ead0>
+
+    def test_both_engines_place_the_furniture_alike(page, second_rendering):
+        """Page furniture that moves between engines is furniture placed by chance."""
+        first = Profile.read(page).furniture
+        second = Profile.read(second_rendering).furniture
+        # Only the left bar's top edge. It butts against the banner, so a
+        # disagreement there is visible. The footer bar's own position drifts ~12px
+        # between these engines even for the reference document — they compute the
+        # usable body height differently — and that drift is hidden under the bar
+        # itself. Asserting on it would fail correct documents.
+        for name in ("left_bar",):
+            a, b = getattr(first, name), getattr(second, name)
+            assert a is not None and b is not None, f"{name} was not found in one rendering"
+            # Only the edge that has a visible relationship is compared. The left
+            # bar's top butts against the banner and any disagreement there shows;
+            # its foot runs under the footer bar, and the two engines put it at
+            # y=1655 and y=1697 even for the reference, because they compute the
+            # usable body height differently. That difference is invisible and is
+            # not the document's fault.
+>           assert abs(a.y0 - b.y0) <= 8, (
+                f"{name} starts at y={a.y0} under one engine and y={b.y0} under "
+                f"another — where it begins is not fixed by the document"
+            )
+E           AssertionError: left_bar starts at y=155 under one engine and y=178 under another — where it begins is not fixed by the document
+E           assert 23 <= 8
+E            +  where 23 = abs((155 - 178))
+E            +    where 155 = (2,155)-(51,1655).y0
+E            +    and   178 = (2,178)-(51,1655).y0
+
+tests/test_state.py:399: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_state.py::test_required_text_is_present[Evid\xeancias de ocorrencia]
+PASSED tests/test_state.py::test_required_text_is_present[Usu\xe1rio 123.3345]
+PASSED tests/test_state.py::test_required_text_is_present[Print da falha]
+PASSED tests/test_state.py::test_required_text_is_present[Evid\xeancia do tempo]
+PASSED tests/test_state.py::test_required_text_is_present[Reconhecimento de Fala (Detalhe A)]
+PASSED tests/test_state.py::test_required_text_is_present[hora 6pm (mostrada no Detalhe B)]
+PASSED tests/test_state.py::test_the_name_reaches_the_footer
+PASSED tests/test_state.py::test_the_placeholders_are_gone
+PASSED tests/test_state.py::test_headings_are_dressed_like_the_template
+PASSED tests/test_state.py::test_the_banner_survived
+PASSED tests/test_state.py::test_a_red_rectangle_marks_a_detail_on_each_image
+PASSED tests/test_state.py::test_no_body_text_is_covered_by_an_image
+PASSED tests/test_state.py::test_each_letter_is_real_text_on_the_page[A]
+PASSED tests/test_state.py::test_each_letter_is_real_text_on_the_page[B]
+PASSED tests/test_state.py::test_the_second_figure_precedes_the_caption_that_refers_to_it
+PASSED tests/test_state.py::test_both_engines_dress_the_headings_alike
+FAILED tests/test_state.py::test_the_page_furniture_is_placed_as_in_the_template
+FAILED tests/test_state.py::test_the_left_bar_starts_below_the_banner - Asser...
+FAILED tests/test_state.py::test_each_image_keeps_its_aspect_ratio[0-1.4719101123595506]
+FAILED tests/test_state.py::test_each_image_keeps_its_aspect_ratio[1-3.8461538461538463]
+FAILED tests/test_state.py::test_an_orange_arrow_runs_from_each_mark_towards_its_letter
+FAILED tests/test_state.py::test_the_frame_hugs_the_image_it_borders - Assert...
+FAILED tests/test_state.py::test_both_engines_place_the_furniture_alike - Ass...
+=================== 7 failed, 16 passed in 77.76s (0:01:17) ====================

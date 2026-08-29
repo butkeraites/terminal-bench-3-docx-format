@@ -1,0 +1,9 @@
+{
+    "jobs_dir": "checks/oracle-after-fix",
+    "quiet": true,
+    "tasks": [
+        {
+            "path": "tasks/docx-format"
+        }
+    ]
+}
