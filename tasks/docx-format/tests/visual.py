@@ -87,6 +87,24 @@ class Page:
     def text(self) -> str:
         return self.pdf_page.get_text()
 
+    def span_color(self, substring: str) -> tuple[float, float, float] | None:
+        """The rendered colour of the first text span that contains `substring`.
+
+        Read off the text layer so the accent of a specific run can be compared
+        between the template and the output without hunting its glyph pixels out
+        of a caption that also carries black text. Returns sRGB in 0..1, or None
+        if no span contains the substring.
+        """
+        for block in self.pdf_page.get_text("dict")["blocks"]:
+            for line in block.get("lines", []):
+                for span in line.get("spans", []):
+                    if substring in span["text"]:
+                        c = int(span["color"])
+                        return ((c >> 16 & 255) / 255.0,
+                                (c >> 8 & 255) / 255.0,
+                                (c & 255) / 255.0)
+        return None
+
     def text_boxes(self) -> list[tuple[Region, str]]:
         out = []
         for block in self.pdf_page.get_text("blocks"):

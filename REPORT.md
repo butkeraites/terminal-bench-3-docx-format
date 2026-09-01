@@ -9,6 +9,29 @@ reproducible from [`configs/`](configs/) and the raw records in
 
 ---
 
+## 0. Update — verifier fixes (2026-09-01)
+
+A review flagged that the verifier still carried bugs. Four were found and
+fixed. Two of them make the grader wrong; two harden it. The suite is now **26
+tests** (was 23), and the oracle was re-confirmed at **26/26 under both real
+renderers** (LibreOffice 7.4.7 and the pinned 25.8.6.2).
+
+| # | Defect | Class | Fix |
+|---|---|---|---|
+| 1 | The instruction requires one caption run in red and one in blue; **no test checked either colour**, so a document with black captions passed. | false positive | Two tests read the accent of the `Detalhe A`/`Detalhe B` runs **off the template** (nothing hardcoded) and require the output to match — red for A, blue for B. |
+| 2 | The second renderer was fetched from a rolling `LibreOffice-still` URL that advances over time, under an 8 px cross-engine tolerance. | reproducibility | Pinned to `LibreOffice-25.8.6.2.basic-x86_64.AppImage` with its md5 verified at build time — the exact build the oracle was confirmed to agree with. |
+| 3 | `test_no_body_text_is_covered_by_an_image` failed a **faithful** imitation of the template: the template puts its own caption 26 px into the clock image, so obeying "imitate the template" broke the test (a second instance of the §5.1 class). | false negative | The figure's own caption is exempt; the test now defends body *prose* from the images, not the caption line. |
+| 4 | Nothing required the artefact to be an editable document — a raster with floated text could pass. | coverage | One test reads the OOXML: valid package, the required words present as real `<w:t>` runs, and no single image over 55 % of the page. |
+
+**Bearing on the numbers below.** The trials in §4 and §6, the digests in §2,
+and the check records in §3 were all measured against the previous **23-test**
+suite. They are left unchanged as the record of what happened, but they are
+**not** results for the current suite — the battery has to be re-run against the
+26 tests before §4/§6 can be quoted for this version. §8 marks each gap that is
+now closed.
+
+---
+
 ## 1. What the task asks
 
 The agent is given `/app/assets/template.pdf` — a one-page report, rendered —
@@ -25,7 +48,7 @@ the same page in more than one word processor, so anything left to a theme
 default is decided by the reader rather than the document.
 
 Category `document_processing`; 4 CPUs, 4 GB, network on; agent timeout 4 h;
-23 tests, binary reward.
+26 tests, binary reward (23 in the trials of §4; see §0).
 
 ## 2. Task identity
 
@@ -319,26 +342,30 @@ Stated plainly rather than papered over.
 1. **The task is at the frontier, not beyond it.** Two of three Claude Code runs
    failed by one test. §4 gives the numbers and the argument for submitting
    anyway.
-2. **Two instruction requirements are unverified.** The red and blue caption runs
-   are never checked; a document with black captions passes all 23 tests. Found
-   by the rubric check. Fixing it means another full battery, which the deadline
-   did not allow.
-3. **The second renderer is not pinned.** It is downloaded from a release-channel
-   URL that advances with each LibreOffice release, while the cross-engine
-   assertions run to an 8 px tolerance. Cheap to fix, but it changes the test
-   image and would invalidate §4.
-4. **Nothing enforces editability.** The instruction asks for an editable Word
-   document and no test checks that it is one. A raster is currently stopped by
-   the letter-presence assertion alone. Three tests would close it properly: OCR
-   the rendering and compare with the text layer, assert the artefact is a real
-   editable document, and check the OOXML for structural markers.
-5. **`test_no_body_text_is_covered_by_an_image` is contradicted by the template**
-   in the same way §5.1 describes, less severely. Left in place deliberately.
+2. **~~Two instruction requirements are unverified.~~ FIXED (§0, #1).** The red and
+   blue caption runs were never checked; a document with black captions passed
+   all 23 tests. Now checked by `test_the_caption_run_keeps_the_templates_accent`,
+   with the expected colours read off the template's own callout runs.
+3. **~~The second renderer is not pinned.~~ FIXED (§0, #2).** It was downloaded from
+   a release-channel URL that advanced with each LibreOffice release, while the
+   cross-engine assertions run to an 8 px tolerance. Now pinned to
+   `LibreOffice-25.8.6.2` with its md5 verified at build time.
+4. **~~Nothing enforces editability.~~ FIXED (§0, #4).** The instruction asks for an
+   editable Word document and no test checked that it was one. Now
+   `test_the_output_is_an_editable_word_document` reads the OOXML: a valid
+   package, the required words present as real `<w:t>` runs, and no single image
+   over 55 % of the page. (OCR-vs-text-layer, the third proxy floated here, was
+   not added — the structural checks close the raster path without a new
+   dependency.)
+5. **~~`test_no_body_text_is_covered_by_an_image` is contradicted by the
+   template~~ FIXED (§0, #3).** It failed a faithful imitation, in the same way
+   §5.1 describes. The figure's own caption is now exempt; the test defends body
+   prose, not the caption line.
 6. **The Codex adversarial trial is weak evidence** — a provider moderation
    block, not the verifier, ended it (§6).
-7. **`behavior_in_task_description` still fails the rubric after the fix**, on
-   four grounds of which one is sound — the body-text overlap in item 5 above.
-   §3 answers the other three by measurement.
+7. **`behavior_in_task_description` failed the rubric after the §5.1 fix**, on
+   four grounds of which one was sound — the body-text overlap, now fixed in
+   item 5 above (§0, #3). §3 answers the other three by measurement.
 8. **Two records score `reward 1` and are not passes.** `trials/probe-docx/` and
    `trials/probe-docx-pdf/` are the earlier drafts Claude Code solved, kept as
    evidence that the task was hardened against a real model (§5). The two

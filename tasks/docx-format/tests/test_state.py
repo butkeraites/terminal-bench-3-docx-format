@@ -7,8 +7,10 @@ passes however it was built.
 """
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
+import zipfile
 from pathlib import Path
 
 import pytest
@@ -70,6 +72,30 @@ def test_the_placeholders_are_gone(page):
         assert leftover not in body, f"placeholder left in place: {leftover!r}"
 
 
+# The instruction requires one caption run in red and one in blue. The colours
+# are not hand-written here: the template already sets its own callout runs —
+# "Detalhe A" and "Detalhe B" — in those two accents, so the expectation is read
+# off the template like every other, and swapping the template swaps the colours.
+CALLOUT_A = "Detalhe A"
+CALLOUT_B = "Detalhe B"
+
+
+@pytest.mark.parametrize("callout", [CALLOUT_A, CALLOUT_B])
+def test_the_caption_run_keeps_the_templates_accent(page, template_page, callout):
+    want = template_page.span_color(callout)
+    assert want is not None, f"the template has no coloured {callout!r} run to compare against"
+    got = page.span_color(callout)
+    assert got is not None, (
+        f"the {callout!r} caption run is not on the page as text — it must be a "
+        f"coloured run, not black and not baked into an image"
+    )
+    off = max(abs(a - b) for a, b in zip(got, want))
+    assert off <= 0.20, (
+        f"the {callout!r} caption run is rgb{tuple(round(c, 2) for c in got)}, "
+        f"the template sets it rgb{tuple(round(c, 2) for c in want)} — wrong accent"
+    )
+
+
 # --------------------------------------------------------------------------
 # the template's visual language, read off the template itself
 #
@@ -85,6 +111,11 @@ TEMPLATE_PDF = Path(__file__).parent / "template.pdf"
 @pytest.fixture(scope="session")
 def template():
     return Profile.read(Page(TEMPLATE_PDF))
+
+
+@pytest.fixture(scope="session")
+def template_page() -> Page:
+    return Page(TEMPLATE_PDF)
 
 
 @pytest.fixture(scope="session")
@@ -238,11 +269,21 @@ def test_an_orange_arrow_runs_from_each_mark_towards_its_letter(page, figures):
 MAX_VERTICAL_BITE = 12  # pixels at 150 dpi; body text here is ~23 px tall
 
 
+# A figure's own caption is exempt: it labels the image and sits tight against
+# it by design — the template puts its clock caption 26 px into the image, so a
+# faithful imitation would fail a check that forbade any overlap (§5.1's mistake,
+# in a milder form). The property this test defends is body *prose* staying
+# clear of the images, not the caption line.
+CAPTION_LINES = (CALLOUT_A, CALLOUT_B)
+
+
 def test_no_body_text_is_covered_by_an_image(page, figures):
     covered = []
     for box, label in page.text_boxes():
         if box.y0 < 0.14 * page.height or box.y0 > 0.92 * page.height:
             continue  # banner and footer bands
+        if any(marker in label for marker in CAPTION_LINES):
+            continue  # a figure's caption may sit against its figure (see above)
         for figure in figures:
             ox0, oy0 = max(box.x0, figure.x0), max(box.y0, figure.y0)
             ox1, oy1 = min(box.x1, figure.x1), min(box.y1, figure.y1)
@@ -321,6 +362,73 @@ def test_the_second_figure_precedes_the_caption_that_refers_to_it(page, figures)
     assert figure.y0 < caption.y0, (
         f"the second figure starts at y={figure.y0} but its caption starts at "
         f"y={caption.y0} — the image is placed after the text that refers to it"
+    )
+
+
+# --------------------------------------------------------------------------
+# editability — the artefact has to be a Word document, not a picture of one
+#
+# The instruction asks for an editable .docx. Everything above grades the
+# rendered page, so a flat raster of the template with a little real text floated
+# on top satisfies most of it. This is the one place the OOXML is inspected, and
+# only for the property pixels cannot express: that the content is really there
+# as editable runs rather than baked into an image.
+#
+# Three things are asked. The file is a valid OOXML package; the visible words
+# exist as text runs, not pixels; and no single image swallows the page, which is
+# what a rastered document looks like (the real figures cover 17% and 1%).
+# --------------------------------------------------------------------------
+
+# One distinctive token from each required content item, plus the callout
+# letters' captions. A word rather than a whole phrase, because runs may split
+# mid-phrase; a raster carries none of them in its text layer.
+EDITABLE_TOKENS = (
+    "Evidências", "Usuário", "Print", "Evidência",
+    "Reconhecimento", "mostrada", "Detalhe",
+)
+
+
+def _ooxml_run_text(docx: Path) -> str:
+    """Every <w:t> run in the document, headers and footers, concatenated."""
+    parts = []
+    with zipfile.ZipFile(docx) as bundle:
+        for name in bundle.namelist():
+            if not (name.startswith("word/") and name.endswith(".xml")):
+                continue
+            if not any(k in name for k in ("document", "header", "footer")):
+                continue
+            xml = bundle.read(name).decode("utf8", "ignore")
+            parts.append("".join(re.findall(r"<w:t[^>]*>(.*?)</w:t>", xml, re.S)))
+    return "\n".join(parts)
+
+
+def test_the_output_is_an_editable_word_document(page):
+    assert zipfile.is_zipfile(OUTPUT), "output.docx is not an OOXML (Word) package"
+    with zipfile.ZipFile(OUTPUT) as bundle:
+        names = set(bundle.namelist())
+    for marker in ("[Content_Types].xml", "word/document.xml"):
+        assert marker in names, (
+            f"output.docx is missing {marker!r} — it is not a real Word document"
+        )
+
+    runs = _ooxml_run_text(OUTPUT)
+    missing = [tok for tok in EDITABLE_TOKENS if tok not in runs]
+    assert not missing, (
+        f"these words are not editable text runs — rasterised or absent: {missing}"
+    )
+
+    # No single image may swallow the page. A rastered document is a page-sized
+    # picture; the real figures cover 17% and 1%. This scans every placed image,
+    # not only the two in the body band, so a full-bleed backdrop behind floated
+    # text is caught rather than skipped for sitting outside the band.
+    page_area = abs(page.pdf_page.rect.width * page.pdf_page.rect.height)
+    biggest = 0.0
+    for image in page.pdf_page.get_images(full=True):
+        for rect in page.pdf_page.get_image_rects(image[0]):
+            biggest = max(biggest, abs(rect.width * rect.height) / page_area)
+    assert biggest <= 0.55, (
+        f"an image covers {biggest:.0%} of the page — this is a picture of a "
+        f"document, not an editable one"
     )
 
 
